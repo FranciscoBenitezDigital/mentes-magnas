@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+
+<!-- SEO Meta Tags -->
+<title>Método Amor Sin Dolor</title>
+<meta name="description" content="Descubre el código emocional invisible que está organizando tus patrones en el amor. Análisis 100% personalizado en 48 horas." />
+<meta property="og:title" content="Método Amor Sin Dolor" />
+<meta property="og:description" content="Descubre el código emocional invisible que está organizando tus patrones en el amor. Análisis 100% personalizado en 48 horas." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Método Amor Sin Dolor" />
+<meta name="twitter:description" content="Descubre el código emocional invisible que está organizando tus patrones en el amor. Análisis 100% personalizado en 48 horas." />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=1622');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='vhsrKeMuck';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>
+            Juras que esta vez sí...
+            <strong>y siempre terminas igual.</strong>
+        </h1>
+        <p class="hero-sub">
+            Hay un código oculto que está dirigiendo tus decisiones en el amor.<br>
+            En 48 horas vas a verlo con nombre y apellido.<br>
+            Basado en tu nombre, tu fecha de nacimiento y tu historia real.
+        </p>
+        <a href="#oferta" class="btn">Quiero ver mi código ahora →</a>
+        <p class="social-proof">Más de 847 mujeres ya descubrieron su verdad oculta</p>
+    </div>
+</section>
+
+<!-- ESPEJO -->
+<section class="seccion-espejo">
+    <div class="container">
+        <span class="label">¿Te reconoces aquí?</span>
+        <h2 class="espejo-titulo">
+            Si alguna de estas frases te resuena en el cuerpo,<br><em>esto es para ti</em>
+        </h2>
+        <div class="espejo-imagenes">
+            <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/46.Espejo-celular-noche.webp" alt="Mujer revisando celular de noche" loading="lazy">
+            <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/47.espejo-tazas-mesa.webp" alt="Mesa con dos tazas" loading="lazy">
+        </div>
+        <div class="pain-grid">
+            <div class="pain-card reveal"><p>Preparas la cena mientras él se ríe por teléfono con esa risa que hace meses no compartes contigo.</p></div>
+            <div class="pain-card reveal"><p>Te despiertas revisando el celular esperando aunque sea un "buenos días". Nada.</p></div>
+            <div class="pain-card reveal"><p>Le dices "te amo" y él solo asiente sin mirarte. Ya ni siquiera finge que le importa.</p></div>
+            <div class="pain-card reveal"><p>Cada vez que le reclamas inventa una pelea para voltearte la situación. Terminas tú pidiendo perdón por "desconfiar".</p></div>
+            <div class="pain-card reveal"><p>Cada vez que intentabas hablar te decía "ya empezaste otra vez con tus dramas". Aprendiste a callarte y tragarte todo.</p></div>
+            <div class="pain-card reveal"><p>Te miras al espejo y ya no reconoces a la mujer que solías ser. ¿Dónde quedó ella?</p></div>
+            <div class="pain-card reveal"><p>Tus hijas empiezan a repetir tus patrones con sus novios y sientes que les heredaste tu historia.</p></div>
+            <div class="pain-card reveal"><p>Ya te había pasado antes. Con otro. Y con el anterior. Y juraste que esta vez iba a ser diferente.</p></div>
+        </div>
+        <div class="espejo-cierre reveal">
+            "Si mientras leías esto sentiste que alguien te estaba espiando... sigue leyendo."
+        </div>
+    </div>
+</section>
+
+<!-- SISTEMA INVERTIDO -->
+<section class="seccion-invertido">
+    <div class="container">
+        <span class="label">La verdad que nadie te ha dicho</span>
+        <h2 class="invertido-titulo">
+            No es que "no aprendas". Es que tienes un <em>código invisible</em> que heredaste sin darte cuenta.
+        </h2>
+        <div class="arbol-img reveal">
+            <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/48.-verdad-arbol-genealogico.webp" alt="Árbol genealógico femenino" loading="lazy">
+        </div>
+        <div class="creencias-box reveal">
+            <p class="titulo-box">Cuando eras niña, tu cerebro emocional aprendió que:</p>
+            <div class="creencias-items">
+                <div class="creencia-item">
+                    <span class="creencia-flecha">→</span>
+                    <span class="creencia-texto">Amor = aguantar</span>
+                </div>
+                <div class="creencia-item">
+                    <span class="creencia-flecha">→</span>
+                    <span class="creencia-texto">Amor = no molestar</span>
+                </div>
+                <div class="creencia-item">
+                    <span class="creencia-flecha">→</span>
+                    <span class="creencia-texto">Amor = callar para no perder</span>
+                </div>
+            </div>
+            <p class="creencias-nota">Y lo aprendiste viendo a tu mamá, a tu abuela, a las mujeres de tu familia que normalizaban el maltrato como si fuera "la forma correcta de amar".</p>
+        </div>
+        <h3 class="invertido-subtitulo">Ahora ese código está invertido:</h3>
+        <div class="cards-invertido">
+            <div class="card-inv reveal">
+                <p><strong>Cuando ves frialdad,</strong> tu cerebro dice: <em>"Esto es familiar, esto es seguro"</em></p>
+            </div>
+            <div class="card-inv reveal">
+                <p><strong>Cuando ves maltrato,</strong> tu cerebro dice: <em>"Así es el amor, aguanta"</em></p>
+            </div>
+            <div class="card-inv reveal">
+                <p><strong>Cuando ves disponibilidad emocional real,</strong> tu cerebro dice: <em>"Esto es aburrido, esto no es amor"</em></p>
+            </div>
+        </div>
+        <div class="banner-impacto reveal">
+            <div class="banner-impacto-item">
+                <span class="banner-icono">🔁</span>
+                <p>Por eso siempre terminas igual.</p>
+            </div>
+            <div class="banner-impacto-item">
+                <span class="banner-icono">💔</span>
+                <p>Por eso aguantas lo que te destruye.</p>
+            </div>
+            <div class="banner-impacto-item">
+                <span class="banner-icono">😶</span>
+                <p>Por eso lo tranquilo te parece sospechoso.</p>
+            </div>
+        </div>
+        <p class="highlight-text reveal">
+            Tu código está invertido. Y hasta que no lo veas, lo nombres y lo reprogrames, vas a seguir repitiendo la misma historia.
+        </p>
+    </div>
+</section>
+
+<!-- PATRÓN -->
+<section class="seccion-patron">
+    <div class="patron-content container">
+        <h2 class="patron-titulo">
+            No es mala suerte.
+            <strong>Es un código oculto organizando todo desde la sombra.</strong>
+        </h2>
+        <p class="patron-texto">
+            Ese código se instaló antes de que tú entendieras qué estaba pasando. Tal vez cuando tenías 4 años. Tal vez cuando tenías 12. Tal vez cuando tu mamá no te miró de la forma que necesitabas. Tal vez cuando tu papá se fue. Tal vez cuando aprendiste que para ser amada tenías que ser perfecta, callada, complaciente, invisible.
+        </p>
+        <p class="patron-puente">Y desde entonces, ese código ha estado eligiendo por ti:</p>
+        <div class="patron-box reveal">
+            <div class="patron-box-item">
+                <span class="patron-box-num">01</span>
+                <p>Qué tipo de persona te atrae.</p>
+            </div>
+            <div class="patron-box-item">
+                <span class="patron-box-num">02</span>
+                <p>Qué comportamientos toleras.</p>
+            </div>
+            <div class="patron-box-item">
+                <span class="patron-box-num">03</span>
+                <p>Cuándo te quedas y cuándo huyes.</p>
+            </div>
+            <div class="patron-box-item">
+                <span class="patron-box-num">04</span>
+                <p>Qué confundes con amor.</p>
+            </div>
+            <div class="patron-box-item">
+                <span class="patron-box-num">05</span>
+                <p>Y por qué siempre, siempre, terminas en el mismo lugar.</p>
+            </div>
+        </div>
+        <p class="patron-texto">
+            No eres la mujer que "no aprende". No eres la que "atrae tóxicos". No eres la que "pide demasiado". Eres la mujer que nunca tuvo acceso a su propio código. Y eso tiene solución.
+        </p>
+        <p class="patron-cierre reveal">
+            Lo que necesitas es ver tu código. Nombrarlo. Y trabajarlo con precisión quirúrgica.
+        </p>
+    </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="seccion-timeline">
+    <div class="container">
+        <span class="label">Si no lo resuelves ahora</span>
+        <h2 class="espejo-titulo" style="margin-bottom: 3rem;">
+            Así se ve tu vida en los próximos años <em>(es la realidad que ves en otras mujeres)</em>
+        </h2>
+        <div class="timeline-inner">
+            <div class="timeline-item reveal">
+                <div class="timeline-badge">6m</div>
+                <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/49.-meses-mujer-sola-comedor.jpg" alt="6 meses" class="timeline-img" loading="lazy">
+                <h3>En 6 meses:</h3>
+                <ul>
+                    <li>Normalizas el patrón: "todas las relaciones son así"</li>
+                    <li>Dejas de esperar que te llame, que te abrace, que te valore</li>
+                    <li>Te conviertes en madre/enfermera/empleada doméstica, ya no en pareja</li>
+                </ul>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-badge">1a</div>
+                <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/50.-anio-mujer-ventana-lluvia.webp" alt="1 año" class="timeline-img" loading="lazy">
+                <h3>En 1 año:</h3>
+                <ul>
+                    <li>Desarrollas problemas físicos: insomnio, gastritis, dolores de cabeza constantes</li>
+                    <li>Tus amigas notan que ya no eres la misma pero finges que todo está bien</li>
+                    <li>Viven como extraños en la misma casa</li>
+                </ul>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-badge">3a</div>
+                <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/51.-anos-nina-mama-llorando.webp" alt="3 años" class="timeline-img" loading="lazy">
+                <h3>En 3 años:</h3>
+                <ul>
+                    <li>Tus hijos normalizan ver a mamá triste/callada/caminando en puntitas</li>
+                    <li>Has perdido contacto con tu familia y amigos</li>
+                    <li>Te miras al espejo y ya no reconoces a la mujer que solías ser</li>
+                </ul>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-badge">5a</div>
+                <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/53.-ciclo-madre-hija.webp" alt="5 años" class="timeline-img" style="filter: grayscale(100%);" loading="lazy">
+                <h3>En 5 años:</h3>
+                <ul>
+                    <li>Te resignas: "así es la vida", "el amor de las películas no existe"</li>
+                    <li>Ves cómo se repite tu historia en las personas que más quieres</li>
+                    <li>Vives en piloto automático: trabajar, servir, callar, repetir</li>
+                </ul>
+            </div>
+            <div class="timeline-item reveal" style="border-left-color: rgba(139,21,56,0.5);">
+                <div class="timeline-badge" style="background: var(--terracota-profundo); width:2.4rem; height:2.4rem; left:-1.2rem; font-size:0.72rem;">10a</div>
+                <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/52.-anos-mujer-mayor-album.webp" alt="10 años" class="timeline-img" loading="lazy">
+                <h3 style="color: var(--terracota-profundo);">En 10 años:</h3>
+                <ul>
+                    <li>Te quedas sola con un extraño o completamente sola</li>
+                    <li>Has olvidado completamente quién eras antes de esta relación</li>
+                    <li>Les dices a otras mujeres: "aguanta, es normal que los hombres sean así"</li>
+                </ul>
+            </div>
+        </div>
+        <div class="timeline-cierre reveal">
+            <p>Este no es un futuro inventado para asustarte.<br>Es lo que ves en tu mamá, en tu tía, en tus amigas que se quedaron.</p>
+            <span>Y tú sabes que no quieres que ese sea tu final.</span>
+        </div>
+    </div>
+</section>
+
+<!-- MÉTODO -->
+<section class="seccion-metodo">
+    <div class="container">
+        <span class="label">Método Amor Sin Dolor</span>
+        <h2 class="metodo-titulo">Tu código invisible, revelado en 3 pilares</h2>
+        <p class="metodo-subtitulo">No adivinas. No recibes contenido genérico. Identificamos el tuyo con precisión quirúrgica.</p>
+
+        <div style="text-align:center; margin-bottom: 3rem;">
+            <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/54.-mapa-documentos-vela-.webp" alt="Mapa Energético del Alma" style="max-width: 480px; width: 100%; display: inline-block; box-shadow: 0 8px 30px rgba(0,0,0,0.15);" loading="lazy">
+        </div>
+
+        <div class="pilares-grid">
+            <div class="pilar reveal">
+                <div class="pilar-numero">01</div>
+                <h3>Tu Mapa Energético</h3>
+                <p>Tu nombre completo, apellidos y fecha de nacimiento revelan tu energía vibracional, tu linaje y las cargas que heredaste sin saberlo. No para adivinar el futuro — para mostrar el código que ya existe en ti.</p>
+            </div>
+            <div class="pilar reveal">
+                <div class="pilar-numero">02</div>
+                <h3>Tu Historia Real</h3>
+                <p>Alma te escucha. Lo que viviste. Lo que nunca le contaste a nadie. Lo que te da pena. Aquí se confirma cuándo se instaló el código, qué pasó, qué creencia se formó, qué estrategia se volvió automática.</p>
+            </div>
+            <div class="pilar reveal">
+                <div class="pilar-numero">03</div>
+                <h3>La Triangulación</h3>
+                <p>Se cruza tu energía con tu historia real. Si la historia no confirma, no se afirma. La historia manda. Así llegamos a UNA verdad que está organizando tu repetición en amor, dinero y decisiones.</p>
+            </div>
+        </div>
+
+        <div class="metodo-imagen-wrap reveal" style="margin-bottom: 2rem;">
+            <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/56.-flujo-entrega.webp" alt="Tu código invisible" loading="lazy">
+        </div>
+
+        <div class="metodo-imagen-wrap reveal">
+            <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/57.metodo-disciplinas-.webp" alt="El método que lo hace posible" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<!-- TRANSFORMACIÓN -->
+<section class="seccion-transformacion">
+    <div class="container">
+        <span class="label">La diferencia real</span>
+        <div class="transformacion-grid">
+            <div class="trans-lado trans-antes reveal">
+                <h3>Sin ver tu código</h3>
+                <ul class="trans-list">
+                    <li>Gastas años en terapia sin entender qué patrón específico te tiene atrapada</li>
+                    <li>Lees libros sobre amor propio pero sigues terminando en el mismo lugar</li>
+                    <li>Sigues confundiendo frialdad con "no ser dependiente" e intensidad con amor real</li>
+                    <li>Te sientes perdida porque nadie te ha mostrado tu código específico</li>
+                    <li>Repites los mismos patrones y te culpas por "no haber aprendido"</li>
+                    <li>Heredas el mismo código a las personas que más quieres sin darte cuenta</li>
+                </ul>
+            </div>
+            <div class="trans-lado trans-despues reveal">
+                <h3>Con tu código identificado</h3>
+                <ul class="trans-list">
+                    <li>Ves por primera vez cómo tu cerebro confunde maltrato con pasión, frialdad con espacio sano</li>
+                    <li>Entiendes que lo heredaste — no es tu culpa pero sí tu responsabilidad</li>
+                    <li>Vas directo a reprogramar TU código específico, no contenido genérico</li>
+                    <li>Tienes nombre y apellido para tu patrón: ya no es "algo que me pasa"</li>
+                    <li>Empiezas a moverte con compasión hacia ti misma</li>
+                    <li>Rompes lo que nadie antes en tu historia pudo ver</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AMAF -->
+<section class="seccion-amaf">
+    <div class="amaf-grid container">
+        <div class="amaf-foto reveal">
+            <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/55.-angela-foto-personal.png" alt="AMAF" loading="lazy">
+        </div>
+        <div class="amaf-texto reveal">
+            <span class="label" style="text-align:left;">Quién soy</span>
+            <h2>Yo también fui esa mujer.</h2>
+            <p class="amaf-parrafo">Pasé más de 20 años repitiendo el mismo patrón.<br>Distintos hombres. Mismo final.<br>Mismas escenas. Distintas caras.</p>
+            <p class="amaf-parrafo">Hice terapia. Leí libros. Hice cursos.<br>Sabía todo sobre heridas emocionales.<br>Y seguía terminando en el mismo lugar.</p>
+            <p class="amaf-parrafo">Hasta que descubrí mi código.<br>Era tan claro que cuando lo vi...<br>entendí todo.<br>Por qué elegía. Por qué me quedaba. Por qué volvía.</p>
+            <p class="amaf-parrafo">Ese día empecé a crear lo que hoy te ofrezco.<br>No desde la teoría.<br>Desde mi propia historia.</p>
+            <p class="amaf-parrafo">Ese día empecé a crear lo que hoy te ofrezco.<br>No desde la teoría.<br>Desde mi propia historia.</p>
+            <p class="amaf-firma">Con amor, AMAF ♡</p>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="seccion-testimonios">
+    <div class="container">
+        <span class="label">Testimonios reales</span>
+        <h2 class="testimonios-titulo">Esto no es lo que yo digo.<br>Es lo que ellas vivieron.</h2>
+        <div class="slider-wrapper">
+            <button class="slider-btn prev" onclick="moverSlider(-1)">‹</button>
+            <div class="slider-track" id="sliderTrack">
+                <div class="slide"><img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/34.-GLORIA.webp" alt="Gloria" loading="lazy"></div>
+                <div class="slide"><img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/35.EN-SHOK.webp" alt="Testimonio" loading="lazy"></div>
+                <div class="slide"><img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/36.ANGELICA.webp" alt="Angélica" loading="lazy"></div>
+                <div class="slide"><img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/37.MAFE_.webp" alt="Mafe" loading="lazy"></div>
+                <div class="slide"><img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/38.-SANDY.webp" alt="Sandy" loading="lazy"></div>
+                <div class="slide"><img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/39.-VENUS.webp" alt="Venus" loading="lazy"></div>
+                <div class="slide"><img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/40.-CAROLINA.webp" alt="Carolina" loading="lazy"></div>
+                <div class="slide"><img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/41.-DAYANA.webp" alt="Dayana" loading="lazy"></div>
+                <div class="slide"><img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/42.-MARGARET.webp" alt="Margaret" loading="lazy"></div>
+                <div class="slide"><img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/43.-MARICEL.webp" alt="Maricel" loading="lazy"></div>
+                <div class="slide"><img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/44.-CLAUDIA.webp" alt="Claudia" loading="lazy"></div>
+            </div>
+            <button class="slider-btn next" onclick="moverSlider(1)">›</button>
+        </div>
+        <div class="slider-dots" id="sliderDots"></div>
+    </div>
+</section>
+
+<!-- TESTIMONIO VENUS -->
+<section style="padding: 60px 24px; background: var(--crema); text-align: center;">
+    <div class="container">
+        <div style="max-width: 700px; margin: 0 auto; background: white; padding: 3rem; border-left: 5px solid var(--dorado); box-shadow: 0 4px 20px var(--sombra);">
+            <p style="font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-style: italic; color: var(--texto); line-height: 1.7; margin-bottom: 1.5rem; position: relative;">
+                <span style="font-size: 4rem; color: var(--dorado); opacity: 0.3; font-family: 'Cormorant Garamond', serif; line-height: 0; vertical-align: -0.5em; margin-right: 0.25rem;">"</span>
+                Descubrí varios aspectos de mi vida reflejados... no sabía que mi nombre describiera tantos aspectos y cualidades de mi vida y mi personalidad.
+            </p>
+            <p style="font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; color: var(--terracota); font-weight: 600;">— Venus</p>
+        </div>
+    </div>
+</section>
+
+<!-- PRECIO -->
+<section class="seccion-precio" id="oferta">
+    <div class="container">
+        <h2 class="precio-titulo">¿Cuánto has pagado ya por terminar siempre en el mismo lugar?</h2>
+        <div class="ancla-precio">
+            <div class="ancla-item">
+                <span class="ancla-label">Años de terapia sin llegar a la raíz</span>
+                <span class="ancla-val">Miles de dólares</span>
+            </div>
+            <div class="ancla-item">
+                <span class="ancla-label">Cursos genéricos donde todas reciben lo mismo</span>
+                <span class="ancla-val">Cientos de dólares</span>
+            </div>
+            <div class="ancla-item">
+                <span class="ancla-label">Relaciones que te costaron tu paz, tu tiempo, tu energía</span>
+                <span class="ancla-val">Incalculable</span>
+            </div>
+        </div>
+        <div class="divisor"></div>
+        <div class="precio-caja reveal">
+            <div class="precio-etiqueta">Inversión única</div>
+            <div class="precio-numero">$37 USD</div>
+            <p class="precio-detalle">Una sola vez. Sin suscripciones. Sin costos ocultos.</p>
+            <p class="precio-razon">No porque valga poco.<br>Sino porque quiero que llegue a la mujer que más lo necesita.</p>
+            <ul class="features-list">
+                <li>Tu Mapa Energético del Alma completo (nombre + fecha + lugar + historia)</li>
+                <li>Documento personalizado "Tu Verdad Oculta" con tu código identificado</li>
+                <li>El diagnóstico exacto de lo que ha estado dirigiendo tu vida amorosa — con ejemplos de TU historia, no de todas</li>
+                <li>Explicación precisa de cómo este código organiza tu amor, tu dinero, tus decisiones</li>
+                <li>Acceso directo al módulo específico para empezar a trabajarlo</li>
+                <li>Totalmente confidencial — sin juicios, sin grupos, sin exposición</li>
+                <li>Proceso 100% personalizado: tu resultado es único, nadie más lo recibirá</li>
+            </ul>
+            <div class="bonos-titulo">🎁 Tus 3 bonos incluidos:</div>
+            <div class="bonos-grid">
+                <div class="bono-item">
+                    <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/58.-bono-1-heridas-ocultas.webp" alt="Bono 1" loading="lazy">
+                    <p class="bono-nombre">Las 5 heridas emocionales ocultas de las que nadie te habla</p>
+                    <p class="bono-desc">Más allá de las 5 heridas conocidas, existen patrones emocionales profundos que operan en silencio y que la mayoría de programas nunca mencionan. Aquí los vas a ver por primera vez.</p>
+                </div>
+                <div class="bono-item">
+                    <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/59.-bono-2-cuerpo-herida.webp" alt="Bono 2" loading="lazy">
+                    <p class="bono-nombre">Cómo tu cuerpo revela la herida emocional que está dirigiendo tus relaciones</p>
+                    <p class="bono-desc">Tu cuerpo habla lo que tu mente calla. Aprende a leer las señales físicas que revelan exactamente qué herida emocional está activa en ti — y a reconocerla en los demás — antes de que cause más daño.</p>
+                </div>
+                <div class="bono-item">
+                    <img src="https://www.mentesmagnas.com/wp-content/uploads/2026/03/60.-bono-3-relacion-duele.webp" alt="Bono 3" loading="lazy">
+                    <p class="bono-nombre">Señales de que estás en una relación que duele</p>
+                    <p class="bono-desc">No siempre es obvio. A veces el daño llega disfrazado de amor, de intensidad, de "así son las relaciones". Esta guía te muestra las señales que muchas mujeres ignoran hasta que ya es tarde.</p>
+                </div>
+            </div>
+            <a href="#" class="btn" style="font-size:1.15rem; padding:1.3rem 3.5rem; display:block; max-width:500px; margin:0 auto 1.5rem; text-align:center;">Sí, quiero ver mi código ahora →</a>
+            <div class="garantias">
+                <span class="garantia">🔒 Pago seguro</span>
+                <span class="garantia">✉️ Proceso confidencial</span>
+                <span class="garantia">⏱️ Entrega en 24-48 horas</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="seccion-faq">
+    <div class="container">
+        <h2 class="faq-titulo">Preguntas que tal vez tengas</h2>
+
+        <div class="faq-item">
+            <button class="faq-pregunta" onclick="toggleFaq(this)">
+                ¿Por qué siempre termino en el mismo lugar aunque cambie de persona?
+                <span class="faq-icono">+</span>
+            </button>
+            <div class="faq-respuesta">
+                <p>Porque tienes un código emocional instalado desde la infancia que elige lo familiar, aunque lo familiar duela. No es tu culpa haberlo heredado. Pero sí es tu responsabilidad verlo. Esto no es un curso más donde te dan clases y te dicen "mira a ver con cuál te identificas". Esto es exclusivo para ti — basado en tu historia real. Nadie más obtiene lo mismo porque nadie más ha vivido lo que tú has vivido.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-pregunta" onclick="toggleFaq(this)">
+                ¿Esto es numerología genérica de internet?
+                <span class="faq-icono">+</span>
+            </button>
+            <div class="faq-respuesta">
+                <p>No. La numerología es solo una de las 5 disciplinas del Método Amor Sin Dolor. Aquí se cruza tu nombre + fecha + lugar + tu historia REAL mediante triangulación. Si la historia no confirma, no se afirma. Tu historia tiene la última palabra. Por eso tu resultado es único — nadie más en el mundo tiene tu combinación exacta.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-pregunta" onclick="toggleFaq(this)">
+                ¿Tengo que contar mi historia en un grupo?
+                <span class="faq-icono">+</span>
+            </button>
+            <div class="faq-respuesta">
+                <p>Jamás. Aquí no te expones a cámaras ni a miradas que juzgan. Nadie opina sobre tu historia — porque nadie más la ha vivido. No tienes que esperar turno para hablar. No dependes del humor de una mentora. No te van a interrumpir. No te van a regañar ni levantar la voz. Tu historia es privada, confidencial y solo tuya. Es entre tú y el proceso. Eso es exclusividad real.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-pregunta" onclick="toggleFaq(this)">
+                ¿Cuánto tiempo toma recibir mi mapa?
+                <span class="faq-icono">+</span>
+            </button>
+            <div class="faq-respuesta">
+                <p>Entre 24 y 48 horas después de enviar tu información completa. El proceso requiere precisión, no rapidez. Prefiero tomarlo con calma y entregarte algo que realmente cambie tu perspectiva.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-pregunta" onclick="toggleFaq(this)">
+                ¿Y si no me representa?
+                <span class="faq-icono">+</span>
+            </button>
+            <div class="faq-respuesta">
+                <p>No puede haber falla — la información la das tú. Tu nombre es el tuyo. Tu fecha es la tuya. Tu historia es la que solo tú has vivido. Nadie más en el mundo tiene esa combinación exacta. El resultado no puede ser genérico porque los datos no son genéricos. Son únicamente tuyos. Tu historia no miente — y el método tampoco.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-pregunta" onclick="toggleFaq(this)">
+                ¿Esto reemplaza la terapia?
+                <span class="faq-icono">+</span>
+            </button>
+            <div class="faq-respuesta">
+                <p>No. Si necesitas terapia, ve a terapia. Esto es un sistema exclusivo y personalizado basado en tu historia real — te da claridad de patrón y dirección concreta. Puede complementar tu terapia perfectamente, pero no la sustituye si estás en trauma activo o crisis.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-pregunta" onclick="toggleFaq(this)">
+                ¿Por qué tan accesible si es tan personalizado?
+                <span class="faq-icono">+</span>
+            </button>
+            <div class="faq-respuesta">
+                <p>Porque he invertido años en desarrollar este método para que sea preciso sin necesitar un precio prohibitivo. El resultado es único porque tú eres única — no porque sea caro hacerlo. El patrón no discrimina por clase social, y este proceso tampoco.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CIERRE -->
+<section class="seccion-cierre">
+    <div class="container">
+        <h2 class="cierre-titulo">
+            Puedes seguir terminando en el mismo lugar,
+            <strong>o puedes ver hoy por qué sucede.</strong>
+        </h2>
+        <p class="cierre-texto">
+            La diferencia no está en "esforzarte más" o "trabajar tu autoestima". Está en ver con nombre y apellido qué código invisible heredaste y cómo está organizando cada una de tus decisiones.
+        </p>
+        <p class="cierre-acento">
+            "En dejar de ser la mujer que siempre termina igual...<br>y convertirte en la que por fin elige diferente."
+        </p>
+        <a href="#oferta" class="btn" style="font-size:1.15rem; padding:1.3rem 3.5rem;">Quiero ver mi código ahora — $37 USD →</a>
+        <p class="cierre-nota">Decisión de 2 minutos. Claridad que puede cambiarlo todo.</p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 AMAF — Método Amor Sin Dolor. Todos los derechos reservados.</p>
+    <div style="margin-top: 0.75rem;">
+        <a href="https://fbdigitalplaza.com/wp-content/uploads/2026/03/Aviso_de_Privacidad_Amor_Sin_Dolor.docx">Política de Privacidad</a>
+    </div>
+</footer>
+
+
+
+<!-- META DISCLAIMER -->
+<div style="background: #1a0e08; padding: 1.5rem 24px; border-top: 1px solid rgba(255,255,255,0.06);">
+    <div style="max-width: 1100px; margin: 0 auto;">
+        <p style="font-size: 0.7rem; color: rgba(250,235,215,0.25); line-height: 1.7; text-align: center; font-weight: 400; font-family: 'Jost', sans-serif;">
+            Este sitio no es parte de Facebook ni de Meta Platforms, Inc. Facebook es una marca registrada de Meta Platforms, Inc. Los resultados mostrados son individuales y no garantizan resultados similares. · <a href="https://fbdigitalplaza.com/wp-content/uploads/2026/03/Aviso_de_Privacidad_Amor_Sin_Dolor.docx" style="color: rgba(250,235,215,0.35); text-decoration: underline;">Política de Privacidad</a>
+        </p>
+    </div>
+</div>
+
+<!-- AMARA CHATBOT WIDGET -->
+<script src="https://paymegpt.com/widget.js" data-widget="50529910" async></script>
+
+  <script src="script.js"></script>
+</body>
+</html></html>
