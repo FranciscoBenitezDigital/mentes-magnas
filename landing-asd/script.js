@@ -9,13 +9,11 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '2102884150044822');
 fbq('track', 'PageView');
 
-// SCROLL REVEAL
-    const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // SMOOTH SCROLL
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
             e.preventDefault();
@@ -24,7 +22,6 @@ fbq('track', 'PageView');
         });
     });
 
-    // FAQ
     function toggleFaq(btn) {
         const item = btn.parentElement;
         const isOpen = item.classList.contains('abierto');
@@ -32,7 +29,6 @@ fbq('track', 'PageView');
         if (!isOpen) item.classList.add('abierto');
     }
 
-    // SLIDER
     let currentSlide = 0;
     const track = document.getElementById('sliderTrack');
     const dotsContainer = document.getElementById('sliderDots');
@@ -61,5 +57,4 @@ fbq('track', 'PageView');
     }
 
     function moverSlider(dir) { irA(currentSlide + dir); }
-
     crearDots();
