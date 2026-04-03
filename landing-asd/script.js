@@ -9,6 +9,15 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '2102884150044822');
 fbq('track', 'PageView');
 
+var _fbqLastCheckout = 0;
+function fbqCheckout() {
+    var now = Date.now();
+    if (now - _fbqLastCheckout > 2000) {
+        _fbqLastCheckout = now;
+        fbq('track', 'InitiateCheckout');
+    }
+}
+
 const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
