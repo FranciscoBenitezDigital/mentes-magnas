@@ -1,0 +1,1 @@
+(function(){var s=document.createElement('script');s.async=true;s.src='https://connect.facebook.net/en_US/fbevents.js';s.onload=function(){if(typeof fbq!=='function'){return;}fbq('init','2102884150044822');fbq('track','PageView');};document.head.appendChild(s);}());
