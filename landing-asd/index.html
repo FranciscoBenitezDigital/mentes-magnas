@@ -2,214 +2,260 @@
 <html lang="es"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <title>Método Amor Sin Dolor — Mapa Energético del Alma</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-    
+    <style>
+        :root {
+            --terracota: #c77056;
+            --terracota-profundo: #a85742;
+            --crema: #faf7f4;
+            --beige: #f5ede6;
+            --dorado: #d4a574;
+            --oscuro: #1a0e08;
+            --texto: #2a1a10;
+            --texto-medio: #4a2c1a;
+            --sombra: rgba(199, 112, 86, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--crema);
+            color: var(--texto);
+            overflow-x: hidden;
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+        .display { font-family: 'Playfair Display', serif; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .label { font-size: 0.78rem; letter-spacing: 4px; text-transform: uppercase; color: var(--terracota); font-weight: 600; margin-bottom: 0.75rem; display: block; text-align: center; }
+        .btn { display: inline-block; background: var(--terracota); color: white; padding: 1.2rem 3rem; font-size: 1.08rem; font-weight: 600; text-decoration: none; border-radius: 2px; transition: all 0.3s; border: none; cursor: pointer; letter-spacing: 0.3px; box-shadow: 0 6px 24px rgba(199,112,86,0.4); }
+        .btn:hover { background: var(--terracota-profundo); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(199,112,86,0.55); }
+        .reveal { opacity: 0; transform: translateY(24px); transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 60px 24px; background-image: url('https://fbdigitalplaza.com/wp-content/uploads/2026/03/45.-FONDO-HERO.webp'); background-size: cover; background-position: center; position: relative; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(15, 8, 3, 0.68); }
+        .hero-content { position: relative; z-index: 2; max-width: 820px; text-align: center; animation: fadeInUp 1.2s ease; }
+        .hero h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 400; color: #faf7f4; line-height: 1.2; margin-bottom: 1.5rem; }
+        .hero h1 strong { display: block; font-style: italic; color: var(--dorado); font-weight: 700; }
+        .hero-sub { font-size: clamp(1.15rem, 2.5vw, 1.4rem); color: #f0e0cc; margin-bottom: 2.5rem; font-weight: 400; line-height: 1.8; max-width: 680px; margin-left: auto; margin-right: auto; }
+        .social-proof { margin-top: 1.5rem; font-size: 0.95rem; color: rgba(240,224,204,0.7); font-style: italic; }
+        .seccion-espejo { padding: 80px 24px; background: var(--crema); }
+        .espejo-titulo { font-size: clamp(2rem, 4vw, 3rem); text-align: center; font-weight: 400; margin-bottom: 3rem; line-height: 1.3; color: var(--texto); }
+        .espejo-titulo em { color: var(--terracota); font-style: italic; }
+        .espejo-imagenes { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 860px; margin: 0 auto 3rem; }
+        .espejo-imagenes img { width: 100%; height: 320px; object-fit: cover; display: block; }
+        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .pain-card { background: white; padding: 2rem 1.75rem 2rem 2.5rem; border-left: 4px solid var(--terracota); box-shadow: 0 3px 16px var(--sombra); position: relative; }
+        .pain-card::before { content: '"'; position: absolute; top: 0.5rem; left: 1rem; font-size: 3.5rem; font-family: 'Cormorant Garamond', serif; color: var(--terracota); opacity: 0.25; line-height: 1; }
+        .pain-card p { font-size: 1.05rem; font-style: italic; color: var(--texto); line-height: 1.7; position: relative; z-index: 2; font-weight: 400; }
+        .espejo-cierre { text-align: center; font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-style: italic; color: white; padding: 2.5rem 3rem; background: var(--terracota-profundo); max-width: 860px; margin: 0 auto; border-left: 5px solid var(--dorado); box-shadow: 0 8px 30px rgba(168,87,66,0.35); }
+        .seccion-invertido { padding: 80px 24px; background: white; }
+        .invertido-titulo { font-size: clamp(2rem, 4vw, 3rem); text-align: center; font-weight: 400; margin-bottom: 3rem; line-height: 1.3; max-width: 820px; margin-left: auto; margin-right: auto; color: var(--texto); }
+        .invertido-titulo em { color: var(--terracota); font-style: italic; }
+        .arbol-img { text-align: center; margin-bottom: 3rem; }
+        .arbol-img img { max-width: 400px; width: 100%; }
+        .creencias-box { background: linear-gradient(135deg, #f8f4f0, #fefefe); padding: 2.5rem; border-left: 5px solid var(--terracota); margin-bottom: 2.5rem; max-width: 860px; margin-left: auto; margin-right: auto; box-shadow: 0 4px 20px var(--sombra); }
+        .creencias-box .titulo-box { font-size: 1.4rem; color: var(--texto); margin-bottom: 1.25rem; font-weight: 600; font-family: 'Cormorant Garamond', serif; }
+        .creencias-items { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .creencia-item { display: flex; align-items: center; gap: 1rem; background: white; padding: 1rem 1.5rem; border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .creencia-flecha { font-size: 1.4rem; color: var(--terracota); font-weight: 900; flex-shrink: 0; }
+        .creencia-texto { font-size: 1.15rem; color: var(--texto); font-weight: 600; }
+        .creencias-nota { font-size: 1.05rem; color: var(--texto-medio); font-style: italic; line-height: 1.8; font-weight: 400; }
+        .invertido-subtitulo { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--terracota); margin-bottom: 1.5rem; font-weight: 600; text-align: center; }
+        .cards-invertido { display: grid; gap: 1rem; max-width: 860px; margin: 0 auto 2.5rem; }
+        .card-inv { background: white; padding: 1.5rem 2rem; border: 1px solid rgba(199,112,86,0.25); box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+        .card-inv p { font-size: 1.1rem; line-height: 1.75; color: var(--texto); }
+        .card-inv strong { color: var(--terracota); font-weight: 700; }
+        .card-inv em { color: var(--texto-medio); font-style: italic; }
+        .banner-impacto { background: linear-gradient(135deg, var(--terracota-profundo), var(--terracota)); padding: 3rem 2rem; text-align: center; max-width: 860px; margin: 0 auto 2rem; box-shadow: 0 8px 30px rgba(168,87,66,0.35); }
+        .banner-impacto-item { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
+        .banner-impacto-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .banner-icono { font-size: 1.8rem; flex-shrink: 0; }
+        .banner-impacto-item p { font-family: 'Playfair Display', serif; font-size: clamp(1.15rem, 2.5vw, 1.5rem); color: white; font-weight: 700; font-style: italic; text-align: left; }
+        .highlight-text { text-align: center; color: var(--texto); font-weight: 600; line-height: 1.7; max-width: 760px; margin: 0 auto; font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2.5vw, 1.7rem); }
+        .seccion-patron { background: linear-gradient(135deg, var(--beige), #e8ddd3); padding: 80px 24px; }
+        .patron-content { max-width: 860px; margin: 0 auto; }
+        .patron-titulo { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; color: var(--texto); margin-bottom: 2rem; line-height: 1.3; text-align: center; }
+        .patron-titulo strong { color: var(--terracota); font-style: italic; }
+        .patron-texto { font-size: 1.1rem; color: var(--texto-medio); line-height: 1.9; margin-bottom: 2rem; font-weight: 400; }
+        .patron-puente { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--terracota); margin: 1.5rem 0; font-weight: 600; }
+        .patron-box { background: white; border-left: 5px solid var(--terracota); padding: 2.5rem; margin: 0 0 2rem; box-shadow: 0 4px 20px var(--sombra); }
+        .patron-box-item { display: flex; align-items: flex-start; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(42,26,16,0.08); }
+        .patron-box-item:last-child { border-bottom: none; }
+        .patron-box-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--terracota); font-weight: 700; font-style: italic; flex-shrink: 0; min-width: 2rem; }
+        .patron-box-item p { font-size: 1.25rem; color: var(--texto); line-height: 1.7; font-weight: 600; font-style: italic; font-family: 'Cormorant Garamond', serif; }
+        .patron-cierre { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2.5vw, 1.6rem); color: var(--texto); font-weight: 700; margin-top: 2rem; text-align: center; font-style: italic; line-height: 1.5; }
+        
+        /* NUEVO: Estilos para sección de 5 heridas */
+        .seccion-heridas { padding: 80px 24px; background: linear-gradient(135deg, #f8f4f0, white); }
+        .heridas-titulo { font-size: clamp(2rem, 4vw, 3rem); text-align: center; font-weight: 400; margin-bottom: 2rem; line-height: 1.3; color: var(--texto); }
+        .heridas-intro { font-size: 1.1rem; color: var(--texto-medio); line-height: 1.8; margin-bottom: 2.5rem; text-align: center; max-width: 760px; margin-left: auto; margin-right: auto; font-weight: 400; }
+        .heridas-lista { list-style: none; max-width: 760px; margin: 0 auto 2.5rem; }
+        .heridas-lista li { padding: 1.25rem 1.5rem 1.25rem 3.5rem; margin-bottom: 1rem; background: white; border-left: 4px solid var(--terracota); box-shadow: 0 3px 16px var(--sombra); position: relative; }
+        .heridas-lista li::before { content: '💔'; position: absolute; left: 1.25rem; top: 1.35rem; font-size: 1.4rem; }
+        .heridas-lista strong { font-size: 1.2rem; color: var(--terracota); font-family: 'Cormorant Garamond', serif; font-weight: 700; display: block; margin-bottom: 0.5rem; }
+        .heridas-lista span { font-size: 1.05rem; color: var(--texto-medio); line-height: 1.7; font-weight: 400; }
+        .heridas-cierre { font-family: 'Playfair Display', serif; font-size: clamp(1.25rem, 2.5vw, 1.7rem); color: var(--terracota-profundo); font-weight: 700; font-style: italic; text-align: center; max-width: 760px; margin: 0 auto; line-height: 1.5; }
+        
+        .seccion-timeline { padding: 80px 24px; background: linear-gradient(to bottom, #f4ede4, white); }
+        .timeline-inner { max-width: 760px; margin: 0 auto; }
+        .timeline-item { margin-bottom: 3rem; padding-left: 3rem; border-left: 3px solid rgba(139,21,56,0.3); position: relative; }
+        .timeline-badge { position: absolute; left: -1.1rem; top: 0; background: var(--terracota); color: white; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.78rem; }
+        .timeline-img { width: 100%; max-width: 520px; display: block; margin-bottom: 1.25rem; filter: grayscale(100%); }
+        .timeline-item h3 { font-size: 1.4rem; color: var(--terracota-profundo); margin-bottom: 1rem; font-weight: 700; }
+        .timeline-item ul { list-style: none; padding: 0; }
+        .timeline-item li { margin-bottom: 0.75rem; font-size: 1.08rem; color: var(--texto); line-height: 1.65; padding-left: 1.75rem; position: relative; font-weight: 400; }
+        .timeline-item li::before { content: '→'; position: absolute; left: 0; color: var(--terracota); font-weight: 700; }
+        .timeline-cierre { background: linear-gradient(135deg, var(--terracota-profundo), var(--terracota)); padding: 3rem; text-align: center; margin-top: 3rem; box-shadow: 0 8px 30px rgba(168,87,66,0.35); }
+        .timeline-cierre p { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2.5vw, 1.6rem); color: white; font-weight: 700; line-height: 1.6; margin-bottom: 0.75rem; }
+        .timeline-cierre span { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 2vw, 1.4rem); color: white; font-style: italic; display: block; margin-top: 0.5rem; opacity: 0.92; }
+        .seccion-metodo { padding: 80px 24px; background: var(--crema); }
+        .metodo-titulo { font-size: clamp(2rem, 4vw, 3.2rem); text-align: center; font-weight: 400; margin-bottom: 0.75rem; line-height: 1.3; color: var(--texto); }
+        .metodo-subtitulo { text-align: center; font-size: 1.1rem; color: var(--texto-medio); margin-bottom: 3rem; font-weight: 400; }
+        .pilares-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 3rem; }
+        .pilar { background: white; padding: 2.5rem 2rem; border-top: 4px solid var(--terracota); box-shadow: 0 4px 20px var(--sombra); text-align: center; }
+        .pilar-numero { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--terracota); font-weight: 700; font-style: italic; line-height: 1; margin-bottom: 1rem; }
+        .pilar h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--texto); }
+        .pilar p { font-size: 1rem; color: var(--texto-medio); line-height: 1.75; font-weight: 400; }
+        .metodo-imagen-wrap { margin-top: 3rem; text-align: center; }
+        .metodo-imagen-wrap img { width: 100%; max-width: 1000px; display: inline-block; }
+        .seccion-transformacion { background: white; padding: 80px 24px; }
+        .transformacion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1000px; margin: 0 auto; }
+        .trans-lado h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 700; }
+        .trans-antes h3 { color: var(--texto-medio); }
+        .trans-despues h3 { color: var(--terracota); }
+        .trans-list { list-style: none; }
+        .trans-list li { padding: 1rem 0 1rem 2.5rem; border-bottom: 1px solid rgba(42,26,16,0.08); font-size: 1.05rem; line-height: 1.65; position: relative; }
+        .trans-antes li { color: var(--texto); font-weight: 500; }
+        .trans-antes li::before { content: '✕'; position: absolute; left: 0; color: #888; font-weight: 900; font-size: 1.1rem; }
+        .trans-despues li { color: var(--texto); font-weight: 500; }
+        .trans-despues li::before { content: '→'; position: absolute; left: 0; color: var(--terracota-profundo); font-weight: 900; font-size: 1.2rem; }
+        .seccion-amaf { padding: 80px 24px; background: #ede0d0; }
+        .amaf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1000px; margin: 0 auto; }
+        .amaf-foto img { width: 100%; max-width: 100%; display: block; box-shadow: 0 12px 40px rgba(199,112,86,0.3); border: 5px solid var(--dorado); }
+        .amaf-texto h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; font-style: italic; color: var(--texto); margin-bottom: 2rem; line-height: 1.3; }
+        .amaf-parrafo { font-size: 1.08rem; color: var(--texto-medio); line-height: 1.9; margin-bottom: 1.5rem; font-weight: 400; }
+        .amaf-firma { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; color: var(--terracota); margin-top: 1.5rem; font-weight: 600; }
+        .seccion-testimonios { padding: 80px 24px; background: var(--crema); }
+        .testimonios-titulo { font-size: clamp(1.8rem, 4vw, 2.8rem); text-align: center; font-weight: 400; font-style: italic; margin-bottom: 3rem; line-height: 1.3; color: var(--texto); }
+        .slider-wrapper { position: relative; overflow: hidden; max-width: 480px; margin: 0 auto; }
+        .slider-track { display: flex; transition: transform 0.4s ease; width: 100%; }
+        .slide { min-width: 100%; flex-shrink: 0; width: 100%; }
+        .slide img { width: 100%; height: auto; display: block; }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: var(--terracota); color: white; border: none; width: 48px; height: 48px; border-radius: 50%; font-size: 1.4rem; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.25); transition: background 0.3s; }
+        .slider-btn:hover { background: var(--terracota-profundo); }
+        .slider-btn.prev { left: -20px; }
+        .slider-btn.next { right: -20px; }
+        .slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: 1.5rem; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(199,112,86,0.3); cursor: pointer; transition: background 0.3s; }
+        .dot.active { background: var(--terracota); }
+        .seccion-precio { padding: 80px 24px; background: linear-gradient(135deg, var(--beige), #e8ddd3); text-align: center; }
+        .precio-titulo { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; color: var(--texto); margin-bottom: 3rem; line-height: 1.3; max-width: 720px; margin-left: auto; margin-right: auto; }
+        .ancla-precio { max-width: 680px; margin: 0 auto 3rem; text-align: left; }
+        .ancla-item { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 0; border-bottom: 1px solid rgba(42,26,16,0.12); gap: 1.5rem; }
+        .ancla-label { font-size: 1.05rem; color: var(--texto); font-weight: 500; }
+        .ancla-val { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: rgba(42,26,16,0.5); text-decoration: line-through; white-space: nowrap; font-weight: 600; }
+        .divisor { height: 1px; background: linear-gradient(to right, transparent, var(--dorado), transparent); margin: 2.5rem auto; max-width: 680px; }
+        .precio-caja { background: white; border: 2px solid var(--terracota); padding: 3rem; max-width: 720px; margin: 0 auto 2rem; box-shadow: 0 8px 30px var(--sombra); }
+        .precio-etiqueta { font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; color: var(--terracota-profundo); margin-bottom: 0.75rem; font-weight: 600; }
+        .precio-numero { font-family: 'Playfair Display', serif; font-size: clamp(4rem, 10vw, 6rem); color: var(--terracota); font-weight: 700; line-height: 1; margin-bottom: 0.5rem; }
+        .precio-detalle { font-size: 1.05rem; color: var(--texto-medio); margin-bottom: 0.5rem; font-weight: 500; }
+        .precio-razon { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--texto-medio); margin-bottom: 2rem; line-height: 1.7; }
+        .features-list { text-align: left; margin: 0 auto 2.5rem; list-style: none; }
+        .features-list li { padding: 1rem 0 1rem 2.5rem; border-bottom: 1px solid rgba(199,112,86,0.15); font-size: 1.05rem; color: var(--texto); position: relative; font-weight: 500; line-height: 1.6; }
+        .features-list li::before { content: '✓'; position: absolute; left: 0; color: var(--terracota); font-weight: 900; font-size: 1.1rem; }
+        .bonos-titulo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--terracota); font-weight: 700; margin: 2rem 0 1.5rem; text-align: left; padding-top: 1.5rem; border-top: 1px solid rgba(199,112,86,0.2); }
+        .bonos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2.5rem; text-align: left; }
+        .bono-item { display: flex; flex-direction: column; gap: 0.75rem; }
+        .bono-item img { width: 100%; display: block; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .bono-nombre { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 700; color: var(--terracota-profundo); line-height: 1.4; }
+        .bono-desc { font-size: 0.92rem; color: var(--texto-medio); line-height: 1.65; font-weight: 400; }
+        .garantias { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .garantia { font-size: 0.9rem; color: var(--texto-medio); font-weight: 500; }
+        .seccion-faq { padding: 80px 24px; background: white; }
+        .faq-titulo { font-size: clamp(2rem, 4vw, 3rem); text-align: center; font-weight: 400; margin-bottom: 3rem; color: var(--texto); }
+        .faq-item { max-width: 760px; margin: 0 auto 1rem; border: 1px solid rgba(199,112,86,0.25); overflow: hidden; }
+        .faq-pregunta { width: 100%; background: none; border: none; text-align: left; padding: 1.4rem 2rem; font-size: 1.1rem; font-weight: 600; color: var(--terracota-profundo); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Jost', sans-serif; transition: background 0.2s; line-height: 1.4; }
+        .faq-pregunta:hover { background: rgba(199,112,86,0.05); }
+        .faq-icono { font-size: 1.6rem; transition: transform 0.3s; color: var(--terracota); flex-shrink: 0; margin-left: 1rem; font-weight: 300; }
+        .faq-item.abierto .faq-icono { transform: rotate(45deg); }
+        .faq-respuesta { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; padding: 0 2rem; }
+        .faq-item.abierto .faq-respuesta { max-height: 600px; padding: 0 2rem 1.75rem; }
+        .faq-respuesta p { font-size: 1.05rem; line-height: 1.8; color: var(--texto-medio); font-weight: 400; }
+        .seccion-cierre { padding: 100px 24px; background: linear-gradient(135deg, var(--beige), #e8ddd3); text-align: center; }
+        .cierre-titulo { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: var(--texto); margin-bottom: 1.5rem; line-height: 1.2; }
+        .cierre-titulo strong { color: var(--terracota); font-style: italic; }
+        .cierre-texto { font-size: 1.15rem; color: var(--texto-medio); margin-bottom: 1.5rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.8; font-weight: 400; }
+        .cierre-acento { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 3vw, 1.8rem); color: var(--terracota-profundo); font-weight: 700; font-style: italic; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+        .cierre-nota { margin-top: 1.5rem; font-size: 0.9rem; color: rgba(42,26,16,0.5); font-style: italic; }
+        .footer { background: var(--oscuro); padding: 2.5rem 24px; text-align: center; }
+        .footer p { font-size: 0.85rem; color: rgba(250,235,215,0.45); margin-bottom: 0.75rem; }
+        .footer a { color: var(--dorado); text-decoration: none; font-size: 0.85rem; margin: 0 1rem; }
+        .footer a:hover { text-decoration: underline; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) {
+            body { font-size: 16px; }
+            .espejo-imagenes { grid-template-columns: 1fr; }
+            .espejo-imagenes img { height: 260px; }
+            .espejo-cierre { padding: 2rem 1.5rem; }
+            .pilares-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .transformacion-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .amaf-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .amaf-foto img { max-width: 100%; }
+            .slide { min-width: calc(100%); }
+            .slider-btn.prev { left: 4px; }
+            .slider-btn.next { right: 4px; }
+            .ancla-item { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+            .bonos-grid { grid-template-columns: 1fr; }
+            .garantias { gap: 1rem; }
+            .timeline-item { padding-left: 2.5rem; }
+            .precio-caja { padding: 2rem 1.5rem; }
+            .creencias-box { padding: 1.75rem; }
+            .banner-impacto-item { flex-direction: column; gap: 0.5rem; text-align: center; }
+            .banner-impacto-item p { text-align: center; }
+            .slider-btn.prev { left: 0; }
+            .slider-btn.next { right: 0; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 40px 20px; }
+            .btn { padding: 1.1rem 2rem; font-size: 1rem; width: 100%; text-align: center; }
+            .pain-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 
 <!-- Meta Pixel Code -->
-
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2102884150044822');
+fbq('track', 'PageView');
+</script>
 <noscript></noscript>
 
 <!-- Anti-duplicado InitiateCheckout -->
-
-
-
-<!-- SEO Meta Tags -->
-<title>Método Amor Sin Dolor — Conoce tu código emocional</title>
-<meta name="description" content="Guía personalizada basada en tu nombre e historia para entender tus patrones en el amor y comenzar a trabajarlos desde la raíz." />
-<meta name="keywords" content="heridas de la infancia patrones amorosos" />
-<meta property="og:title" content="Método Amor Sin Dolor — Conoce tu código emocional" />
-<meta property="og:description" content="Guía personalizada basada en tu nombre e historia para entender tus patrones en el amor y comenzar a trabajarlos desde la raíz." />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Método Amor Sin Dolor — Conoce tu código emocional" />
-<meta name="twitter:description" content="Guía personalizada basada en tu nombre e historia para entender tus patrones en el amor y comenzar a trabajarlos desde la raíz." />
-<link rel="icon" href="https://fbdigitalplaza.com/wp-content/uploads/2026/03/alma-transparente.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://fbdigitalplaza.com/wp-content/uploads/2026/03/alma-transparente.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://fbdigitalplaza.com/wp-content/uploads/2026/03/alma-transparente.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="https://fbdigitalplaza.com/wp-content/uploads/2026/03/alma-transparente.png" />
-<!-- End SEO Meta Tags -->
-
-<script data-field-replace>
-(function(){
-  var params=new URLSearchParams(window.location.search);
-  var fields={};
-  var paramMap={
-    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
-    'email':'email','phone':'phone','company':'company',
-    'city':'city','state':'state','country':'country'
-  };
-  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
-  var hasUrlFields=false;
-  for(var p in paramMap){
-    var v=params.get(p);
-    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
-  }
-  var contactId=params.get('contact_id');
-  function esc(s){
-    if(!s)return s;
-    var d=document.createElement('div');
-    d.appendChild(document.createTextNode(s));
-    return d.innerHTML;
-  }
-  function doReplace(data){
-    var r={};
-    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
-    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
-    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
-    r['{{email}}']=esc(data.email||'');
-    r['{{phone}}']=esc(data.phone||'');
-    r['{{company}}']=esc(data.company||'');
-    r['{{city}}']=esc(data.city||'');
-    r['{{state}}']=esc(data.state||'');
-    r['{{country}}']=esc(data.country||'');
-    r['{{date}}']=new Date().toLocaleDateString();
-    r['{{time}}']=new Date().toLocaleTimeString();
-    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
-    r['{{tracking_id}}']=esc(data.trackingId||'');
-    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
-    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
-    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
-    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
-    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
-    r['{{ip_address}}']=esc(data.ipAddress||'');
-    r['{{ip}}']=esc(data.ipAddress||'');
-    if(data.customFields){
-      for(var k in data.customFields){
-        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
-      }
+<script>
+var _fbqLastCheckout = 0;
+function fbqCheckout() {
+    var now = Date.now();
+    if (now - _fbqLastCheckout > 2000) {
+        _fbqLastCheckout = now;
+        fbq('track', 'InitiateCheckout');
     }
-    params.forEach(function(v,k){
-      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
-        r['{{'+k+'}}']=esc(v);
-      }
-    });
-    var hasValues=false;
-    for(var key in r){if(r[key]){hasValues=true;break;}}
-    if(!hasValues)return;
-    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
-      acceptNode:function(n){
-        var p=n.parentNode;
-        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
-        return NodeFilter.FILTER_ACCEPT;
-      }
-    });
-    var node;
-    while(node=walker.nextNode()){
-      var txt=node.nodeValue;
-      if(txt&&txt.indexOf('{{')>-1){
-        var changed=txt;
-        for(var ph in r){
-          if(r[ph]&&changed.indexOf(ph)>-1){
-            changed=changed.split(ph).join(r[ph]);
-          }
-        }
-        if(changed!==txt)node.nodeValue=changed;
-      }
-    }
-    var attrs=['value','placeholder','content','alt','title'];
-    attrs.forEach(function(attr){
-      var els=document.querySelectorAll('['+attr+'*="{{"]');
-      for(var i=0;i<els.length;i++){
-        var tag=els[i].tagName;
-        if(skipTags[tag])continue;
-        var val=els[i].getAttribute(attr);
-        if(val){
-          var nv=val;
-          for(var ph in r){
-            if(r[ph]&&nv.indexOf(ph)>-1){
-              nv=nv.split(ph).join(r[ph]);
-            }
-          }
-          if(nv!==val)els[i].setAttribute(attr,nv);
-        }
-      }
-    });
-  }
-  function run(){
-    if(contactId){
-      var xhr=new XMLHttpRequest();
-      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=1622');
-      xhr.onload=function(){
-        if(xhr.status===200){
-          try{
-            var resp=JSON.parse(xhr.responseText);
-            if(resp.success&&resp.contact){
-              var merged=resp.contact;
-              for(var k in fields){merged[k]=fields[k];}
-              doReplace(merged);
-              return;
-            }
-          }catch(e){}
-        }
-        if(hasUrlFields)doReplace(fields);
-      };
-      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
-      xhr.send();
-    }else if(hasUrlFields){
-      doReplace(fields);
-    }
-  }
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
-  else{run();}
-})();
+}
 </script>
-<script data-payment>
-(function(){
-  var slug='vhsrKeMuck';
-  var apiBase='https://paymegpt.com';
-  function findEmail(){
-    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
-    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
-    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
-    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
-    return '';
-  }
-  function findName(){
-    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
-    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
-    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
-    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
-    return '';
-  }
-  var __realProcessPayment=function(a,b,c,d,e){
-    var amountCents,email,productName,productDescription,customerName,quantity;
-    if(a&&typeof a==='object'){
-      amountCents=a.amountCents;email=a.email;productName=a.productName;
-      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
-    }else{
-      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
-      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
-    }
-    if(!email)email=findEmail();
-    if(!customerName)customerName=findName();
-    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
-    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
-    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
-    var successBase=window.location.href.split('?')[0];
-    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
-    }).then(function(r){return r.json();}).then(function(d){
-      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
-      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
-    });
-  };
-  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
-  document.addEventListener('DOMContentLoaded',function(){
-    var urlParams=new URLSearchParams(window.location.search);
-    if(urlParams.get('payment')==='success'){
-      var pName=urlParams.get('product')||'your item';
-      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
-      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
-      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
-      document.body.appendChild(overlay);
-    }
-  });
-})();
-</script>  <link rel="stylesheet" href="styles.css">
+
 </head><body><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2102884150044822&ev=PageView&noscript=1">
 <!-- End Meta Pixel Code -->
 
@@ -220,12 +266,483 @@
         <p class="hero-sub">
             Una de 5 heridas emocionales invisibles está dirigiendo tus relaciones.<br>
             <strong>Abandono. Rechazo. Humillación. Traición. Injusticia.</strong><br>
-            En 48 horas descubrirás cuál es la tuya — con tu nombre, fecha e historia real.
+            En 48 horas descubrirás cuál es la tuya — con tu nombre, fecha y historia real.
         </p>
         <a href="#oferta" class="btn" style="margin-top:2rem;">Descubre tu herida de raíz — $37 USD</a>
         <p class="social-proof">Más de 847 mujeres ya rompieron el patrón</p>
     </div>
 </section>
 
-<!-- Rest of HTML continues as before... -->
-<script src="script.js"></script>
+<!-- ESPEJO -->
+<section class="seccion-espejo">
+    <div class="container">
+        <span class="label">¿Te reconoces aquí?</span>
+        <h2 class="espejo-titulo">Si alguna de estas frases te resuena en el cuerpo,<br><em>esto es para ti</em></h2>
+        <div class="espejo-imagenes">
+            <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/46.Espejo-celular-noche.webp" alt="Mujer revisando celular de noche" loading="lazy">
+            <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/47.espejo-tazas-mesa.webp" alt="Mesa con dos tazas" loading="lazy">
+        </div>
+        <div class="pain-grid">
+            <div class="pain-card reveal"><p>Preparas la cena mientras él se ríe por teléfono con esa risa que hace meses no comparte contigo.</p></div>
+            <div class="pain-card reveal"><p>Te despiertas revisando el celular esperando aunque sea un "buenos días". Nada.</p></div>
+            <div class="pain-card reveal"><p>Le dices "te amo" y él solo asiente sin mirarte. Ya ni siquiera finge que le importa.</p></div>
+            <div class="pain-card reveal"><p>Cada vez que le reclamas inventa una pelea para voltearte la situación. Terminas tú pidiendo perdón por "desconfiar".</p></div>
+            <div class="pain-card reveal"><p>Cada vez que intentabas hablar te decía "ya empezaste otra vez con tus dramas". Aprendiste a callarte y tragarte todo.</p></div>
+            <div class="pain-card reveal"><p>Te miras al espejo y ya no reconoces a la mujer que solías ser. ¿Dónde quedó ella?</p></div>
+            <div class="pain-card reveal"><p>Tus hijas empiezan a repetir tus patrones con sus novios y sientes que les heredaste tu historia.</p></div>
+            <div class="pain-card reveal"><p>Ya te había pasado antes. Con otro. Y con el anterior. Y juraste que esta vez iba a ser diferente.</p></div>
+        </div>
+        <div class="espejo-cierre reveal">"Si mientras leías esto sentiste que alguien te estaba espiando... sigue leyendo."</div>
+    </div>
+</section>
+
+<!-- SISTEMA INVERTIDO -->
+<section class="seccion-invertido">
+    <div class="container">
+        <span class="label">La verdad que nadie te ha dicho</span>
+        <h2 class="invertido-titulo">No es que "no aprendas". Es que tienes un <em>código invisible</em> que heredaste sin darte cuenta.</h2>
+        <div class="arbol-img reveal">
+            <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/48.-verdad-arbol-genealogico.webp" alt="Árbol genealógico femenino" loading="lazy">
+        </div>
+        <div class="creencias-box reveal">
+            <p class="titulo-box">Cuando eras niña, tu cerebro emocional aprendió que:</p>
+            <div class="creencias-items">
+                <div class="creencia-item"><span class="creencia-flecha">→</span><span class="creencia-texto">Amor = aguantar</span></div>
+                <div class="creencia-item"><span class="creencia-flecha">→</span><span class="creencia-texto">Amor = no molestar</span></div>
+                <div class="creencia-item"><span class="creencia-flecha">→</span><span class="creencia-texto">Amor = callar para no perder</span></div>
+            </div>
+            <p class="creencias-nota">Y lo aprendiste viendo a tu mamá, a tu abuela, a las mujeres de tu familia que normalizaban el maltrato como si fuera "la forma correcta de amar".</p>
+        </div>
+        <h3 class="invertido-subtitulo">Ahora ese código está invertido:</h3>
+        <div class="cards-invertido">
+            <div class="card-inv reveal"><p><strong>Cuando ves frialdad,</strong> tu cerebro dice: <em>"Esto es familiar, esto es seguro"</em></p></div>
+            <div class="card-inv reveal"><p><strong>Cuando ves maltrato,</strong> tu cerebro dice: <em>"Así es el amor, aguanta"</em></p></div>
+            <div class="card-inv reveal"><p><strong>Cuando ves disponibilidad emocional real,</strong> tu cerebro dice: <em>"Esto es aburrido, esto no es amor"</em></p></div>
+        </div>
+        <div class="banner-impacto reveal">
+            <div class="banner-impacto-item"><span class="banner-icono">🔁</span><p>Por eso siempre terminas igual.</p></div>
+            <div class="banner-impacto-item"><span class="banner-icono">💔</span><p>Por eso aguantas lo que te destruye.</p></div>
+            <div class="banner-impacto-item"><span class="banner-icono">😶</span><p>Por eso lo tranquilo te parece sospechoso.</p></div>
+        </div>
+        <p class="highlight-text reveal">Tu código está invertido. Y hasta que no lo veas, lo nombres y lo reprogrames, vas a seguir repitiendo la misma historia.</p>
+        <div style="text-align:center; margin-top: 3rem;">
+            <a href="https://pay.hotmart.com/D104164246N" class="btn" style="background:#4A5240; color:#faf7f4; box-shadow:0 6px 24px rgba(74,82,64,0.4); font-size:1.1rem; padding:1.2rem 3rem;" onmouseover="this.style.background='#363d2f'" onmouseout="this.style.background='#4A5240'" onclick="fbqCheckout()">Sí, quiero ver mi código — $37 USD →</a>
+        </div>
+    </div>
+</section>
+
+<!-- PATRÓN -->
+<section class="seccion-patron">
+    <div class="patron-content container">
+        <h2 class="patron-titulo">No es mala suerte. <strong>Es un código oculto organizando todo desde la sombra.</strong></h2>
+        <p class="patron-texto">Ese código se instaló antes de que tú entendieras qué estaba pasando. Tal vez cuando tenías 4 años. Tal vez cuando tenías 12. Tal vez cuando tu mamá no te miró de la forma que necesitabas. Tal vez cuando tu papá se fue. Tal vez cuando aprendiste que para ser amada tenías que ser perfecta, callada, complaciente, invisible.</p>
+        <p class="patron-puente">Y desde entonces, ese código ha estado eligiendo por ti:</p>
+        <div class="patron-box reveal">
+            <div class="patron-box-item"><span class="patron-box-num">01</span><p>Qué tipo de persona te atrae.</p></div>
+            <div class="patron-box-item"><span class="patron-box-num">02</span><p>Qué comportamientos toleras.</p></div>
+            <div class="patron-box-item"><span class="patron-box-num">03</span><p>Cuándo te quedas y cuándo huyes.</p></div>
+            <div class="patron-box-item"><span class="patron-box-num">04</span><p>Qué confundes con amor.</p></div>
+            <div class="patron-box-item"><span class="patron-box-num">05</span><p>Y por qué siempre, siempre, terminas en el mismo lugar.</p></div>
+        </div>
+        <p class="patron-texto">No eres la mujer que "no aprende". No eres la que "atrae tóxicos". No eres la que "pide demasiado". Eres la mujer que nunca tuvo acceso a su propio código. Y eso tiene solución.</p>
+        <p class="patron-cierre reveal">Lo que necesitas es ver tu código. Nombrarlo. Y trabajarlo con precisión quirúrgica.</p>
+    </div>
+</section>
+
+<!-- ✅ CAMBIO #1: NUEVA SECCIÓN DE LAS 5 HERIDAS -->
+<section class="seccion-heridas">
+    <div class="container">
+        <span class="label">Tu patrón tiene nombre</span>
+        <h2 class="heridas-titulo">Las 5 heridas emocionales que dirigen tu vida amorosa</h2>
+        <p class="heridas-intro">Hay 5 códigos invisibles que se heredan de la infancia y que organizan cómo amas, qué toleras y por qué siempre terminas en el mismo lugar:</p>
+        <ul class="heridas-lista">
+            <li class="reveal">
+                <strong>Abandono</strong>
+                <span>Aguantas lo inaceptable por miedo a quedarte sola</span>
+            </li>
+            <li class="reveal">
+                <strong>Rechazo</strong>
+                <span>Buscas validación constante porque te sientes invisible</span>
+            </li>
+            <li class="reveal">
+                <strong>Humillación</strong>
+                <span>Cedes tu poder para no sentirte inadecuada</span>
+            </li>
+            <li class="reveal">
+                <strong>Traición</strong>
+                <span>No confías aunque quieras hacerlo</span>
+            </li>
+            <li class="reveal">
+                <strong>Injusticia</strong>
+                <span>Exiges perfección de ti misma y terminas agotada</span>
+            </li>
+        </ul>
+        <p class="heridas-cierre reveal"><strong>Una de estas 5 es TU herida de raíz.</strong><br>En 48 horas descubrirás cuál es — y recibirás el curso especializado para trabajar SOLO esa herida.<br>No estudias las 5. Vas directo a la tuya.</p>
+    </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="seccion-timeline">
+    <div class="container">
+        <span class="label">Si no lo resuelves ahora</span>
+        <h2 class="espejo-titulo" style="margin-bottom: 3rem;">Así se ve tu vida en los próximos años <em>(es la realidad que ves en otras mujeres)</em></h2>
+        <div class="timeline-inner">
+            <div class="timeline-item reveal">
+                <div class="timeline-badge">6m</div>
+                <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/49.-meses-mujer-sola-comedor.jpg" alt="6 meses" class="timeline-img" loading="lazy">
+                <h3>En 6 meses:</h3>
+                <ul>
+                    <li>Normalizas el patrón: "todas las relaciones son así"</li>
+                    <li>Dejas de esperar que te llame, que te abrace, que te valore</li>
+                    <li>Te conviertes en madre/enfermera/empleada doméstica, ya no en pareja</li>
+                </ul>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-badge">1a</div>
+                <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/50.-anio-mujer-ventana-lluvia.webp" alt="1 año" class="timeline-img" loading="lazy">
+                <h3>En 1 año:</h3>
+                <ul>
+                    <li>Desarrollas problemas físicos: insomnio, gastritis, dolores de cabeza constantes</li>
+                    <li>Tus amigas notan que ya no eres la misma pero finges que todo está bien</li>
+                    <li>Viven como extraños en la misma casa</li>
+                </ul>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-badge">3a</div>
+                <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/51.-anos-nina-mama-llorando.webp" alt="3 años" class="timeline-img" loading="lazy">
+                <h3>En 3 años:</h3>
+                <ul>
+                    <li>Tus hijos normalizan ver a mamá triste/callada/caminando en puntitas</li>
+                    <li>Has perdido contacto con tu familia y amigos</li>
+                    <li>Te miras al espejo y ya no reconoces a la mujer que solías ser</li>
+                </ul>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-badge">5a</div>
+                <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/53.-ciclo-madre-hija.webp" alt="5 años" class="timeline-img" style="filter: grayscale(100%);" loading="lazy">
+                <h3>En 5 años:</h3>
+                <ul>
+                    <li>Te resignas: "así es la vida", "el amor de las películas no existe"</li>
+                    <li>Ves cómo se repite tu historia en las personas que más quieres</li>
+                    <li>Vives en piloto automático: trabajar, servir, callar, repetir</li>
+                </ul>
+            </div>
+            <div class="timeline-item reveal" style="border-left-color: rgba(139,21,56,0.5);">
+                <div class="timeline-badge" style="background: var(--terracota-profundo); width:2.4rem; height:2.4rem; left:-1.2rem; font-size:0.72rem;">10a</div>
+                <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/52.-anos-mujer-mayor-album.webp" alt="10 años" class="timeline-img" loading="lazy">
+                <h3 style="color: var(--terracota-profundo);">En 10 años:</h3>
+                <ul>
+                    <li>Te quedas sola con un extraño o completamente sola</li>
+                    <li>Has olvidado completamente quién eras antes de esta relación</li>
+                    <li>Les dices a otras mujeres: "aguanta, es normal que los hombres sean así"</li>
+                </ul>
+            </div>
+        </div>
+        <div class="timeline-cierre reveal">
+            <p>Este no es un futuro inventado para asustarte.<br>Es lo que ves en tu mamá, en tu tía, en tus amigas que se quedaron.</p>
+            <span>Y tú sabes que no quieres que ese sea tu final.</span>
+        </div>
+        <div style="text-align:center; margin-top: 3rem;">
+            <a href="https://pay.hotmart.com/D104164246N" class="btn" style="background:#4A5240; color:#faf7f4; box-shadow:0 6px 24px rgba(74,82,64,0.4); font-size:1.1rem; padding:1.2rem 3rem;" onmouseover="this.style.background='#363d2f'" onmouseout="this.style.background='#4A5240'" onclick="fbqCheckout()">Quiero conocer el método — $37 USD →</a>
+        </div>
+    </div>
+</section>
+
+<!-- MÉTODO -->
+<section class="seccion-metodo">
+    <div class="container">
+        <span class="label">Método Amor Sin Dolor</span>
+        <h2 class="metodo-titulo">Tu código invisible, revelado en 3 pilares</h2>
+        <p class="metodo-subtitulo">No adivinas. No recibes contenido genérico. Identificamos el tuyo con precisión quirúrgica.</p>
+        <div style="text-align:center; margin-bottom: 3rem;">
+            <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/54.-mapa-documentos-vela-.webp" alt="Mapa Energético del Alma" style="max-width: 480px; width: 100%; display: inline-block; box-shadow: 0 8px 30px rgba(0,0,0,0.15);" loading="lazy">
+        </div>
+        <div class="pilares-grid">
+            <div class="pilar reveal">
+                <div class="pilar-numero">01</div>
+                <h3>Tu Mapa Energético</h3>
+                <p>Tu nombre completo, apellidos y fecha de nacimiento revelan tu energía vibracional, tu linaje y las cargas que heredaste sin saberlo. No para adivinar el futuro — para mostrar el código que ya existe en ti.</p>
+            </div>
+            <!-- ✅ CAMBIO #2: MODIFICADO PUNTO 02 "TU HISTORIA REAL" -->
+            <div class="pilar reveal">
+                <div class="pilar-numero">02</div>
+                <h3>Tu Historia Real</h3>
+                <p><strong>Entrevista personalizada con Alma (20 min vía voz)</strong><br><br>Le cuentas tu historia real en una conversación privada. Ella escucha sin juzgar.<br><br><em>Privado, confidencial, sin cámara, sin exposición. Solo tú y Alma.</em><br><br>Aquí se confirma cuándo se instaló el código, qué pasó, qué creencia se formó, qué estrategia se volvió automática.</p>
+            </div>
+            <div class="pilar reveal">
+                <div class="pilar-numero">03</div>
+                <h3>La Triangulación</h3>
+                <p>Se cruza tu energía con tu historia real. Si la historia no confirma, no se afirma. La historia manda. Así llegamos a UNA verdad que está organizando tu repetición en amor, dinero y decisiones.</p>
+            </div>
+        </div>
+        <div class="metodo-imagen-wrap reveal" style="margin-bottom: 2rem;">
+            <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/56.-flujo-entrega.webp" alt="Tu código invisible" loading="lazy">
+        </div>
+        <div class="metodo-imagen-wrap reveal">
+            <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/57.metodo-disciplinas-.webp" alt="El método que lo hace posible" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<!-- TRANSFORMACIÓN -->
+<section class="seccion-transformacion">
+    <div class="container">
+        <span class="label">La diferencia real</span>
+        <div class="transformacion-grid">
+            <div class="trans-lado trans-antes reveal">
+                <h3>Sin ver tu código</h3>
+                <ul class="trans-list">
+                    <li>Gastas años en terapia sin entender qué patrón específico te tiene atrapada</li>
+                    <li>Lees libros sobre amor propio pero sigues terminando en el mismo lugar</li>
+                    <li>Sigues confundiendo frialdad con "no ser dependiente" e intensidad con amor real</li>
+                    <li>Te sientes perdida porque nadie te ha mostrado tu código específico</li>
+                    <li>Repites los mismos patrones y te culpas por "no haber aprendido"</li>
+                    <li>Heredas el mismo código a las personas que más quieres sin darte cuenta</li>
+                </ul>
+            </div>
+            <div class="trans-lado trans-despues reveal">
+                <h3>Con tu código identificado</h3>
+                <ul class="trans-list">
+                    <li>Ves por primera vez cómo tu cerebro confunde maltrato con pasión, frialdad con espacio sano</li>
+                    <li>Entiendes que lo heredaste — no es tu culpa pero sí tu responsabilidad</li>
+                    <li>Vas directo a reprogramar TU código específico, no contenido genérico</li>
+                    <li>Tienes nombre y apellido para tu patrón: ya no es "algo que me pasa"</li>
+                    <li>Empiezas a moverte con compasión hacia ti misma</li>
+                    <li>Rompes lo que nadie antes en tu historia pudo ver</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AMAF -->
+<section class="seccion-amaf">
+    <div class="amaf-grid container">
+        <div class="amaf-foto reveal">
+            <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/55.-angela-foto-personal.png" alt="AMAF" loading="lazy">
+        </div>
+        <div class="amaf-texto reveal">
+            <span class="label" style="text-align:left;">Quién soy</span>
+            <h2>Yo también fui esa mujer.</h2>
+            <p class="amaf-parrafo">Pasé más de 20 años repitiendo el mismo patrón.<br>Distintos hombres. Mismo final.<br>Mismas escenas. Distintas caras.</p>
+            <p class="amaf-parrafo">Hice terapia. Leí libros. Hice cursos.<br>Sabía todo sobre heridas emocionales.<br>Y seguía terminando en el mismo lugar.</p>
+            <p class="amaf-parrafo">Hasta que descubrí mi código.<br>Era tan claro que cuando lo vi...<br>entendí todo.<br>Por qué elegía. Por qué me quedaba. Por qué volvía.</p>
+            <p class="amaf-parrafo">Ese día empecé a crear lo que hoy te ofrezco.<br>No desde la teoría.<br>Desde mi propia historia.</p>
+            <p class="amaf-firma">Con amor, AMAF ♡</p>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="seccion-testimonios">
+    <div class="container">
+        <span class="label">Testimonios reales</span>
+        <h2 class="testimonios-titulo">Esto no es lo que yo digo.<br>Es lo que ellas vivieron.</h2>
+        <div class="slider-wrapper">
+            <button class="slider-btn prev" onclick="moverSlider(-1)">‹</button>
+            <div class="slider-track" id="sliderTrack">
+                <div class="slide"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/34.-GLORIA.webp" alt="Gloria" loading="lazy"></div>
+                <div class="slide"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/35.EN-SHOK.webp" alt="Testimonio" loading="lazy"></div>
+                <div class="slide"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/36.ANGELICA.webp" alt="Angélica" loading="lazy"></div>
+                <div class="slide"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/37.MAFE_.webp" alt="Mafe" loading="lazy"></div>
+                <div class="slide"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/38.-SANDY.webp" alt="Sandy" loading="lazy"></div>
+                <div class="slide"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/39.-VENUS.webp" alt="Venus" loading="lazy"></div>
+                <div class="slide"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/40.-CAROLINA-1.webp" alt="Carolina" loading="lazy"></div>
+                <div class="slide"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/41.-DAYANA.webp" alt="Dayana" loading="lazy"></div>
+                <div class="slide"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/42.-MARGARET.webp" alt="Margaret" loading="lazy"></div>
+                <div class="slide"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/43.-MARICEL.webp" alt="Maricel" loading="lazy"></div>
+                <div class="slide"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/44.-CLAUDIA.webp" alt="Claudia" loading="lazy"></div>
+            </div>
+            <button class="slider-btn next" onclick="moverSlider(1)">›</button>
+        </div>
+        <div class="slider-dots" id="sliderDots"></div>
+    </div>
+</section>
+
+<!-- TESTIMONIO VENUS -->
+<section style="padding: 60px 24px; background: var(--crema); text-align: center;">
+    <div class="container">
+        <div style="max-width: 700px; margin: 0 auto; background: white; padding: 3rem; border-left: 5px solid var(--dorado); box-shadow: 0 4px 20px var(--sombra);">
+            <p style="font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-style: italic; color: var(--texto); line-height: 1.7; margin-bottom: 1.5rem; position: relative;">
+                <span style="font-size: 4rem; color: var(--dorado); opacity: 0.3; font-family: 'Cormorant Garamond', serif; line-height: 0; vertical-align: -0.5em; margin-right: 0.25rem;">"</span>
+                Descubrí varios aspectos de mi vida reflejados... no sabía que mi nombre describiera tantos aspectos y cualidades de mi vida y mi personalidad.
+            </p>
+            <p style="font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; color: var(--terracota); font-weight: 600;">— Venus</p>
+        </div>
+    </div>
+</section>
+
+<!-- PRECIO -->
+<section class="seccion-precio" id="oferta">
+    <div class="container">
+        <h2 class="precio-titulo">¿Cuánto has pagado ya por terminar siempre en el mismo lugar?</h2>
+        <div class="ancla-precio">
+            <div class="ancla-item"><span class="ancla-label">Años de terapia sin llegar a la raíz</span><span class="ancla-val">Miles de dólares</span></div>
+            <div class="ancla-item"><span class="ancla-label">Cursos genéricos donde todas reciben lo mismo</span><span class="ancla-val">Cientos de dólares</span></div>
+            <div class="ancla-item"><span class="ancla-label">Relaciones que te costaron tu paz, tu tiempo, tu energía</span><span class="ancla-val">Incalculable</span></div>
+        </div>
+        <div class="divisor"></div>
+        <div class="precio-caja reveal">
+            <div class="precio-etiqueta">Inversión única</div>
+            <div class="precio-numero">$37 USD</div>
+            <p class="precio-detalle">Una sola vez. Sin suscripciones. Sin costos ocultos.</p>
+            <p class="precio-razon">No porque valga poco.<br>Sino porque quiero que llegue a la mujer que más lo necesita.</p>
+            <!-- ✅ CAMBIO #3: AGREGADAS 2 LÍNEAS EN LA LISTA DE FEATURES -->
+            <ul class="features-list">
+                <li>Tu Mapa Energético del Alma completo (nombre + fecha + lugar + historia)</li>
+                <li>Diagnóstico preciso: cuál de las 5 heridas emocionales está dirigiendo tu vida</li>
+                <li>Curso personalizado de TU herida de raíz únicamente (no las 5 heridas genéricas)</li>
+                <li>Documento personalizado "Tu Verdad Oculta" con tu código identificado</li>
+                <li>El diagnóstico exacto de lo que ha estado dirigiendo tu vida amorosa — con ejemplos de TU historia, no de todas</li>
+                <li>Explicación precisa de cómo este código organiza tu amor, tu dinero, tus decisiones</li>
+                <li>Acceso directo al módulo específico para empezar a trabajarlo</li>
+                <li>Totalmente confidencial — sin juicios, sin grupos, sin exposición</li>
+                <li>Proceso 100% personalizado: tu resultado es único, nadie más lo recibirá</li>
+            </ul>
+            <div class="bonos-titulo">🎁 Tus 3 bonos incluidos:</div>
+            <div class="bonos-grid">
+                <div class="bono-item">
+                    <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/58.-bono-1-heridas-ocultas.webp" alt="Bono 1" loading="lazy">
+                    <p class="bono-nombre">Las 5 heridas emocionales ocultas de las que nadie te habla</p>
+                    <p class="bono-desc">Más allá de las 5 heridas conocidas, existen patrones emocionales profundos que operan en silencio y que la mayoría de programas nunca mencionan. Aquí los vas a ver por primera vez.</p>
+                </div>
+                <div class="bono-item">
+                    <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/59.-bono-2-cuerpo-herida.webp" alt="Bono 2" loading="lazy">
+                    <p class="bono-nombre">Cómo tu cuerpo revela la herida emocional que está dirigiendo tus relaciones</p>
+                    <p class="bono-desc">Tu cuerpo habla lo que tu mente calla. Aprende a leer las señales físicas que revelan exactamente qué herida emocional está activa en ti — y a reconocerla en los demás — antes de que cause más daño.</p>
+                </div>
+                <div class="bono-item">
+                    <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/60.-bono-3-relacion-duele.webp" alt="Bono 3" loading="lazy">
+                    <p class="bono-nombre">Señales de que estás en una relación que duele</p>
+                    <p class="bono-desc">No siempre es obvio. A veces el daño llega disfrazado de amor, de intensidad, de "así son las relaciones". Esta guía te muestra las señales que muchas mujeres ignoran hasta que ya es tarde.</p>
+                </div>
+            </div>
+            <a href="https://pay.hotmart.com/D104164246N" class="btn" style="background:#4A5240; color:#faf7f4; box-shadow:0 6px 24px rgba(74,82,64,0.4); font-size:1.15rem; padding:1.3rem 3.5rem; display:block; max-width:500px; margin:0 auto 1.5rem; text-align:center;" onmouseover="this.style.background='#363d2f'" onmouseout="this.style.background='#4A5240'" onclick="fbqCheckout()">Sí, quiero acceder ahora — $37 USD →</a>
+            <div class="garantias">
+                <span class="garantia">🔒 Pago seguro</span>
+                <span class="garantia">✉️ Proceso confidencial</span>
+                <span class="garantia">⏱️ Entrega en 24-48 horas</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="seccion-faq">
+    <div class="container">
+        <h2 class="faq-titulo">Preguntas que tal vez tengas</h2>
+        <div class="faq-item">
+            <button class="faq-pregunta" onclick="toggleFaq(this)">¿Por qué siempre termino en el mismo lugar aunque cambie de persona?<span class="faq-icono">+</span></button>
+            <div class="faq-respuesta"><p>Porque tienes un código emocional instalado desde la infancia que elige lo familiar, aunque lo familiar duela. No es tu culpa haberlo heredado. Pero sí es tu responsabilidad verlo. Esto no es un curso más donde te dan clases y te dicen "mira a ver con cuál te identificas". Esto es exclusivo para ti — basado en tu historia real. Nadie más obtiene lo mismo porque nadie más ha vivido lo que tú has vivido.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-pregunta" onclick="toggleFaq(this)">¿Esto es numerología genérica de internet?<span class="faq-icono">+</span></button>
+            <div class="faq-respuesta"><p>No. La numerología es solo una de las 5 disciplinas del Método Amor Sin Dolor. Aquí se cruza tu nombre + fecha + lugar + tu historia REAL mediante triangulación. Si la historia no confirma, no se afirma. Tu historia tiene la última palabra. Por eso tu resultado es único — nadie más en el mundo tiene tu combinación exacta.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-pregunta" onclick="toggleFaq(this)">¿Tengo que contar mi historia en un grupo?<span class="faq-icono">+</span></button>
+            <div class="faq-respuesta"><p>Jamás. Aquí no te expones a cámaras ni a miradas que juzgan. Nadie opina sobre tu historia — porque nadie más la ha vivido. No tienes que esperar turno para hablar. No dependes del humor de una mentora. No te van a interrumpir. No te van a regañar ni levantar la voz. Tu historia es privada, confidencial y solo tuya. Es entre tú y el proceso. Eso es exclusividad real.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-pregunta" onclick="toggleFaq(this)">¿Cuánto tiempo toma recibir mi mapa?<span class="faq-icono">+</span></button>
+            <div class="faq-respuesta"><p>Entre 24 y 48 horas después de enviar tu información completa. El proceso requiere precisión, no rapidez. Prefiero tomarlo con calma y entregarte algo que realmente cambie tu perspectiva.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-pregunta" onclick="toggleFaq(this)">¿Y si no me representa?<span class="faq-icono">+</span></button>
+            <div class="faq-respuesta"><p>No puede haber falla — la información la das tú. Tu nombre es el tuyo. Tu fecha es la tuya. Tu historia es la que solo tú has vivido. Nadie más en el mundo tiene esa combinación exacta. El resultado no puede ser genérico porque los datos no son genéricos. Son únicamente tuyos. Tu historia no miente — y el método tampoco.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-pregunta" onclick="toggleFaq(this)">¿Esto reemplaza la terapia?<span class="faq-icono">+</span></button>
+            <div class="faq-respuesta"><p>No. Si necesitas terapia, ve a terapia. Esto es un sistema exclusivo y personalizado basado en tu historia real — te da claridad de patrón y dirección concreta. Puede complementar tu terapia perfectamente, pero no la sustituye si estás en trauma activo o crisis.</p></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-pregunta" onclick="toggleFaq(this)">¿Por qué tan accesible si es tan personalizado?<span class="faq-icono">+</span></button>
+            <div class="faq-respuesta"><p>Porque he invertido años en desarrollar este método para que sea preciso sin necesitar un precio prohibitivo. El resultado es único porque tú eres única — no porque sea caro hacerlo. El patrón no discrimina por clase social, y este proceso tampoco.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- CIERRE -->
+<section class="seccion-cierre">
+    <div class="container">
+        <h2 class="cierre-titulo">Puedes seguir terminando en el mismo lugar, <strong>o puedes ver hoy por qué sucede.</strong></h2>
+        <p class="cierre-texto">La diferencia no está en "esforzarte más" o "trabajar tu autoestima". Está en ver con nombre y apellido qué código invisible heredaste y cómo está organizando cada una de tus decisiones.</p>
+        <p class="cierre-acento">"En dejar de ser la mujer que siempre termina igual...<br>y convertirte en la que por fin elige diferente."</p>
+        <a href="https://pay.hotmart.com/D104164246N" class="btn" style="background:#4A5240; color:#faf7f4; box-shadow:0 6px 24px rgba(74,82,64,0.4); font-size:1.15rem; padding:1.3rem 3.5rem;" onmouseover="this.style.background='#363d2f'" onmouseout="this.style.background='#4A5240'" onclick="fbqCheckout()">Estoy lista. Quiero mi código — $37 USD →</a>
+        <p class="cierre-nota">Decisión de 2 minutos. Claridad que puede cambiarlo todo.</p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 AMAF — Método Amor Sin Dolor. Todos los derechos reservados.</p>
+    <div style="margin-top: 0.75rem;">
+        <a href="https://fbdigitalplaza.com/wp-content/uploads/2026/03/Aviso_de_Privacidad_Amor_Sin_Dolor.docx">Política de Privacidad</a>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const t = document.querySelector(a.getAttribute('href'));
+            if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    function toggleFaq(btn) {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('abierto');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('abierto'));
+        if (!isOpen) item.classList.add('abierto');
+    }
+
+    let currentSlide = 0;
+    const track = document.getElementById('sliderTrack');
+    const dotsContainer = document.getElementById('sliderDots');
+    const slides = track.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function crearDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.onclick = () => irA(i);
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function actualizarDots() {
+        document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+    }
+
+    function irA(index) {
+        currentSlide = Math.max(0, Math.min(index, totalSlides - 1));
+        const slideWidth = slides[0].offsetWidth;
+        track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        actualizarDots();
+    }
+
+    function moverSlider(dir) { irA(currentSlide + dir); }
+    crearDots();
+</script>
+
+<!-- META DISCLAIMER -->
+<div style="background: #1a0e08; padding: 1.5rem 24px; border-top: 1px solid rgba(255,255,255,0.06);">
+    <div style="max-width: 1100px; margin: 0 auto;">
+        <p style="font-size: 0.9rem; color: rgba(250,235,215,0.25); line-height: 1.7; text-align: center; font-weight: 400; font-family: 'Jost', sans-serif;">
+            Este sitio no es parte de Facebook ni de Meta Platforms, Inc. Facebook es una marca registrada de Meta Platforms, Inc. Los resultados mostrados son individuales y no garantizan resultados similares. · <a href="https://fbdigitalplaza.com/wp-content/uploads/2026/03/Aviso_de_Privacidad_Amor_Sin_Dolor.docx" style="color: rgba(250,235,215,0.35); text-decoration: underline;">Política de Privacidad</a>
+        </p>
+    </div>
+</div>
+
+<!-- AMARA CHATBOT WIDGET -->
+<script src="https://paymegpt.com/widget.js" data-widget="50529910" async=""></script>
+
+</body></html>
