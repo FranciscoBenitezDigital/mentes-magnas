@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="icon" href="https://fbdigitalplaza.com/wp-content/uploads/2026/03/alma-transparente.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+
+<!-- SEO Meta Tags -->
+<title>Mentes Magnas — Programa Educativo de Desarrollo Personal</title>
+<meta name="description" content="Mentes Magnas ofrece contenido educativo y formación digital de desarrollo personal. Método Amor Sin Dolor: programa educativo para comprender patrones emocionales." />
+<meta property="og:title" content="Mentes Magnas — Programa Educativo de Desarrollo Personal" />
+<meta property="og:description" content="Mentes Magnas ofrece contenido educativo y formación digital de desarrollo personal. Método Amor Sin Dolor: programa educativo para comprender patrones emocionales." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Mentes Magnas — Programa Educativo de Desarrollo Personal" />
+<meta name="twitter:description" content="Mentes Magnas ofrece contenido educativo y formación digital de desarrollo personal. Método Amor Sin Dolor: programa educativo para comprender patrones emocionales." />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=4276');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='8YL5TfCqDk';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||('Thank you for purchasing '+pName+'.');
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-pay-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var pBtn=document.getElementById('lp-pay-success-btn');
+      if(pBtn){pBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="container">
+        <a href="#inicio" class="logo">
+            <img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/alma-transparente.png" alt="Mentes Magnas">
+            <span>Mentes Magnas</span>
+        </a>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#privacidad">Privacidad</a>
+            <a href="#terminos">Términos</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </div>
+</header>
+
+<!-- INICIO -->
+<section id="inicio" class="seccion-clara">
+    <div class="container">
+        <div class="disclaimer">
+            <p>
+                <strong>Mentes Magnas</strong> ofrece contenido educativo y formación digital de desarrollo personal. 
+                <strong>No sustituimos terapia psicológica, atención médica, diagnóstico profesional ni tratamiento de salud mental.</strong>
+            </p>
+        </div>
+        
+        <h1>Programa Educativo de Desarrollo Personal</h1>
+        <p class="subtitulo">Ayudamos a mujeres a comprender los patrones emocionales heredados que organizan sus decisiones en amor, dinero y vida.</p>
+        
+        <div class="valores">
+            <div class="valor">
+                <h3>Personalizado</h3>
+                <p>Tu código emocional es único. Nuestro método identifica tu patrón específico basado en tu nombre, fecha de nacimiento e historia real.</p>
+            </div>
+            <div class="valor">
+                <h3>Privado</h3>
+                <p>Confidencialidad total. Sin grupos, sin exposición, sin juicios. Tu proceso es solo tuyo.</p>
+            </div>
+            <div class="valor">
+                <h3>Efectivo</h3>
+                <p>Basado en 5 disciplinas: Numerología Cabalística, Biodescodificación, Heridas de la Infancia, Transgeneracional y tu Historia Real.</p>
+            </div>
+        </div>
+        
+        <div id="contacto" class="contacto-box">
+            <h3 style="margin-top: 0;">Contacto</h3>
+            <div class="contacto-item">
+                <strong>Email:</strong>
+                <a href="mailto:amorsindolor@mentesmagnas.com">amorsindolor@mentesmagnas.com</a>
+            </div>
+            <div class="contacto-item">
+                <strong>Telegram:</strong>
+                <a href="https://t.me/+HbH_kzEF-Qg2YWM5" target="_blank">Comunidad Telegram</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- POLÍTICA DE PRIVACIDAD -->
+<section id="privacidad" class="seccion-oscura">
+    <div class="container">
+        <div class="legal-content">
+            <h2>Política de Privacidad</h2>
+            <p><strong>Fecha de última actualización:</strong> 23 de mayo de 2026</p>
+            
+            <h3>1. Información que Recopilamos</h3>
+            <p>En Mentes Magnas ("nosotros", "nuestro"), recopilamos la siguiente información personal cuando utilizas nuestros servicios:</p>
+            <ul>
+                <li><strong>Información de identificación personal:</strong> Nombre completo, apellidos, fecha de nacimiento, lugar de nacimiento, correo electrónico, número de teléfono.</li>
+                <li><strong>Información sensible:</strong> Historia personal y emocional que compartes voluntariamente durante el proceso de entrevista con ALMA (nuestro agente de voz IA) o mediante formularios.</li>
+                <li><strong>Información de pago:</strong> Datos de transacción procesados por Hotmart (nuestro procesador de pagos). No almacenamos información de tarjetas de crédito.</li>
+                <li><strong>Información técnica:</strong> Dirección IP, tipo de navegador, páginas visitadas, tiempo en el sitio, cookies y tecnologías similares.</li>
+            </ul>
+            
+            <h3>2. Cómo Utilizamos tu Información</h3>
+            <p>Utilizamos tu información personal para:</p>
+            <ul>
+                <li>Generar tu Mapa Energético del Alma personalizado basado en tu nombre, fecha y lugar de nacimiento</li>
+                <li>Analizar tu historia emocional para identificar tu código emocional específico</li>
+                <li>Entregarte documentos personalizados ("Tu Verdad Oculta") y contenido de sanación específico para tu herida emocional identificada</li>
+                <li>Procesar pagos y enviar confirmaciones de compra</li>
+                <li>Comunicarnos contigo sobre tu proceso de sanación y enviarte contenido relacionado</li>
+                <li>Mejorar nuestros servicios y personalizar tu experiencia</li>
+                <li>Cumplir con obligaciones legales y fiscales</li>
+            </ul>
+            
+            <h3>3. Base Legal para el Tratamiento de Datos</h3>
+            <p>Procesamos tus datos personales bajo las siguientes bases legales:</p>
+            <ul>
+                <li><strong>Consentimiento:</strong> Al proporcionar tu información personal y compartir tu historia emocional, consientes expresamente el procesamiento de estos datos</li>
+                <li><strong>Ejecución de contrato:</strong> Para proporcionarte los servicios que adquiriste (Método Amor Sin Dolor)</li>
+                <li><strong>Interés legítimo:</strong> Para mejorar nuestros servicios y personalizar tu experiencia</li>
+                <li><strong>Cumplimiento legal:</strong> Para cumplir con obligaciones fiscales y contables</li>
+            </ul>
+            
+            <h3>4. Cómo Compartimos tu Información</h3>
+            <p>No vendemos ni alquilamos tu información personal. Compartimos tu información únicamente con:</p>
+            <ul>
+                <li><strong>Proveedores de servicios:</strong> Hotmart (procesamiento de pagos), Google Sheets (almacenamiento de datos de entrevistas), Make.com (automatización de procesos), OpenAI (generación de contenido personalizado), Vapi (agente de voz ALMA), ElevenLabs (voz sintética)</li>
+                <li><strong>Autoridades legales:</strong> Cuando sea requerido por ley o para proteger nuestros derechos legales</li>
+            </ul>
+            <p>Todos nuestros proveedores están obligados contractualmente a proteger tu información y no pueden usarla para otros fines.</p>
+            
+            <h3>5. Retención de Datos</h3>
+            <p>Conservamos tu información personal:</p>
+            <ul>
+                <li>Durante el tiempo necesario para proporcionarte el servicio adquirido</li>
+                <li>Hasta que solicites la eliminación de tus datos (derecho al olvido)</li>
+                <li>Según lo requieran las leyes fiscales y contables aplicables (generalmente 5-10 años para registros financieros)</li>
+            </ul>
+            
+            <h3>6. Tus Derechos</h3>
+            <p>Tienes derecho a:</p>
+            <ul>
+                <li><strong>Acceso:</strong> Solicitar una copia de tu información personal</li>
+                <li><strong>Rectificación:</strong> Corregir información inexacta o incompleta</li>
+                <li><strong>Eliminación (derecho al olvido):</strong> Solicitar la eliminación de tu información personal</li>
+                <li><strong>Oposición:</strong> Oponerte al procesamiento de tus datos personales</li>
+                <li><strong>Portabilidad:</strong> Recibir tus datos en formato estructurado y legible</li>
+                <li><strong>Retirar consentimiento:</strong> Retirar tu consentimiento en cualquier momento</li>
+            </ul>
+            <p>Para ejercer estos derechos, contáctanos en: <a href="mailto:amorsindolor@mentesmagnas.com">amorsindolor@mentesmagnas.com</a></p>
+            
+            <h3>7. Seguridad de los Datos</h3>
+            <p>Implementamos medidas de seguridad técnicas y organizativas apropiadas para proteger tu información personal contra acceso no autorizado, alteración, divulgación o destrucción. Esto incluye:</p>
+            <ul>
+                <li>Cifrado de datos en tránsito (HTTPS/SSL)</li>
+                <li>Acceso restringido a información personal solo a personal autorizado</li>
+                <li>Revisiones regulares de nuestras prácticas de seguridad</li>
+                <li>Contratos de procesamiento de datos con todos nuestros proveedores</li>
+            </ul>
+            
+            <h3>8. Cookies y Tecnologías de Rastreo</h3>
+            <p>Utilizamos cookies y tecnologías similares para:</p>
+            <ul>
+                <li>Recordar tus preferencias</li>
+                <li>Entender cómo usas nuestro sitio web</li>
+                <li>Medir la efectividad de nuestras campañas de marketing (Meta Pixel)</li>
+            </ul>
+            <p>Puedes controlar el uso de cookies en la configuración de tu navegador.</p>
+            
+            <h3>9. Transferencias Internacionales de Datos</h3>
+            <p>Algunos de nuestros proveedores de servicios están ubicados fuera de tu país de residencia (por ejemplo, OpenAI en Estados Unidos). Nos aseguramos de que existan garantías adecuadas para proteger tu información personal en estas transferencias.</p>
+            
+            <h3>10. Menores de Edad</h3>
+            <p>Nuestros servicios están dirigidos a personas mayores de 18 años. No recopilamos intencionalmente información de menores de edad.</p>
+            
+            <h3>11. Cambios a Esta Política</h3>
+            <p>Podemos actualizar esta Política de Privacidad ocasionalmente. Te notificaremos sobre cambios significativos publicando la nueva política en esta página y actualizando la fecha de "última actualización".</p>
+            
+            <h3>12. Contacto</h3>
+            <p>Si tienes preguntas sobre esta Política de Privacidad, contáctanos:</p>
+            <ul>
+                <li>Email: <a href="mailto:amorsindolor@mentesmagnas.com">amorsindolor@mentesmagnas.com</a></li>
+                <li>Telegram: <a href="https://t.me/+HbH_kzEF-Qg2YWM5" target="_blank">https://t.me/+HbH_kzEF-Qg2YWM5</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- TÉRMINOS Y CONDICIONES -->
+<section id="terminos" class="seccion-clara">
+    <div class="container">
+        <div class="legal-content">
+            <h2>Términos y Condiciones</h2>
+            <p><strong>Fecha de última actualización:</strong> 23 de mayo de 2026</p>
+            
+            <h3>1. Aceptación de los Términos</h3>
+            <p>Al acceder y utilizar los servicios de Mentes Magnas, incluyendo el Método Amor Sin Dolor, aceptas estar legalmente vinculado por estos Términos y Condiciones. Si no estás de acuerdo con alguna parte de estos términos, no debes utilizar nuestros servicios.</p>
+            
+            <h3>2. Descripción del Servicio</h3>
+            <p>Mentes Magnas ofrece el <strong>Método Amor Sin Dolor</strong>, un programa educativo personalizado de desarrollo personal que incluye:</p>
+            <ul>
+                <li>Entrevista emocional conducida por ALMA (agente de voz IA) o formulario escrito</li>
+                <li>Mapa Energético del Alma basado en numerología cabalística, tu nombre completo y fecha de nacimiento</li>
+                <li>Documento personalizado "Tu Verdad Oculta" que identifica tu patrón emocional específico</li>
+                <li>Acceso a contenido educativo específico para tu patrón identificado (Abandono, Rechazo, Humillación, Traición o Injusticia)</li>
+                <li>Recursos adicionales y bonos incluidos en tu compra</li>
+            </ul>
+            
+            <h3>3. Elegibilidad</h3>
+            <p>Debes tener al menos 18 años de edad para utilizar nuestros servicios. Al usar nuestros servicios, declaras y garantizas que tienes al menos 18 años.</p>
+            
+            <h3>4. Compra y Pago</h3>
+            <ul>
+                <li>El precio del Método Amor Sin Dolor es de <strong>$37 USD</strong> (pago único)</li>
+                <li>Los pagos se procesan a través de Hotmart, nuestro procesador de pagos autorizado</li>
+                <li>Todos los precios están expresados en dólares estadounidenses (USD)</li>
+                <li>No hay cargos recurrentes, suscripciones ni costos ocultos</li>
+                <li>El pago es procesado de forma segura y Mentes Magnas no almacena información de tarjetas de crédito</li>
+            </ul>
+            
+            <h3>5. Entrega del Servicio</h3>
+            <ul>
+                <li>Recibirás acceso inmediato al proceso de entrevista (ALMA o formulario) después de completar tu compra</li>
+                <li>Tu documento personalizado "Tu Verdad Oculta" será entregado por correo electrónico en un plazo de <strong>24 a 48 horas</strong> después de completar la entrevista</li>
+                <li>El acceso al contenido educativo específico para tu patrón emocional se enviará en los plazos comunicados (24 horas y 48 horas posteriores a la entrega del diagnóstico)</li>
+                <li>Todos los materiales se entregan en formato digital (PDF, video, audio)</li>
+            </ul>
+            
+            <h3>6. Política de Reembolso</h3>
+            <p>Debido a la naturaleza personalizada y confidencial de nuestro servicio:</p>
+            <ul>
+                <li><strong>No ofrecemos reembolsos</strong> una vez que hayas completado la entrevista con ALMA o enviado tu formulario</li>
+                <li>Si experimentas problemas técnicos que impiden completar el proceso, contáctanos en <a href="mailto:amorsindolor@mentesmagnas.com">amorsindolor@mentesmagnas.com</a> y trabajaremos para resolverlo</li>
+                <li>Esta política está claramente comunicada antes de la compra</li>
+            </ul>
+            
+            <h3>7. Propiedad Intelectual</h3>
+            <p>Todo el contenido proporcionado por Mentes Magnas, incluyendo:</p>
+            <ul>
+                <li>El Método Amor Sin Dolor</li>
+                <li>Tu documento personalizado "Tu Verdad Oculta"</li>
+                <li>Contenido educativo (videos, audios, PDFs)</li>
+                <li>Bonos y materiales adicionales</li>
+                <li>Diseño, textos e imágenes del sitio web</li>
+            </ul>
+            <p>...está protegido por derechos de autor y es propiedad exclusiva de Mentes Magnas. Te otorgamos una licencia personal, no transferible y no exclusiva para usar estos materiales únicamente para tu desarrollo personal.</p>
+            <p><strong>Está estrictamente prohibido:</strong></p>
+            <ul>
+                <li>Compartir, distribuir, vender o revender el contenido</li>
+                <li>Publicar el contenido en redes sociales, blogs o sitios web</li>
+                <li>Usar el contenido para fines comerciales o lucrativos</li>
+                <li>Modificar, adaptar o crear obras derivadas del contenido</li>
+            </ul>
+            
+            <h3>8. Limitación de Responsabilidad</h3>
+            <p><strong>IMPORTANTE:</strong> Mentes Magnas ofrece un programa educativo de desarrollo personal y NO sustituye:</p>
+            <ul>
+                <li>Terapia psicológica profesional</li>
+                <li>Atención médica o psiquiátrica</li>
+                <li>Tratamiento para condiciones de salud mental diagnosticadas</li>
+                <li>Asesoramiento legal, financiero o profesional</li>
+            </ul>
+            <p>El Método Amor Sin Dolor es complementario y no reemplaza el cuidado profesional. Si estás experimentando una crisis de salud mental, pensamientos suicidas o necesitas ayuda inmediata, contacta servicios de emergencia o profesionales de salud mental calificados.</p>
+            <p>Mentes Magnas no garantiza resultados específicos. Los resultados individuales pueden variar según tu compromiso, circunstancias personales y otros factores fuera de nuestro control.</p>
+            
+            <h3>9. Exactitud de la Información</h3>
+            <p>El resultado de tu Mapa Energético del Alma y diagnóstico depende directamente de la exactitud de la información que proporcionas:</p>
+            <ul>
+                <li>Nombre completo tal como aparece en tu acta de nacimiento</li>
+                <li>Fecha de nacimiento correcta</li>
+                <li>Lugar de nacimiento exacto</li>
+                <li>Historia emocional veraz y completa</li>
+            </ul>
+            <p>No somos responsables de resultados inexactos derivados de información incorrecta o incompleta proporcionada por ti.</p>
+            
+            <h3>10. Confidencialidad</h3>
+            <p>Toda la información personal y emocional que compartes con nosotros es estrictamente confidencial y será tratada de acuerdo con nuestra <a href="#privacidad">Política de Privacidad</a>. Tu historia NO será compartida en grupos, publicaciones o con terceros no autorizados.</p>
+            
+            <h3>11. Uso Aceptable</h3>
+            <p>Al usar nuestros servicios, aceptas:</p>
+            <ul>
+                <li>Proporcionar información veraz y exacta</li>
+                <li>No utilizar el servicio para fines ilegales o no autorizados</li>
+                <li>No intentar acceder a sistemas o información no autorizados</li>
+                <li>No acosar, abusar o dañar a otros usuarios o al personal de Mentes Magnas</li>
+                <li>No realizar ingeniería inversa, copiar o replicar nuestro método o contenido</li>
+            </ul>
+            
+            <h3>12. Modificaciones del Servicio</h3>
+            <p>Nos reservamos el derecho de modificar, suspender o discontinuar cualquier aspecto de nuestro servicio en cualquier momento, incluyendo:</p>
+            <ul>
+                <li>Contenido y materiales ofrecidos</li>
+                <li>Precio del servicio (no afecta compras ya realizadas)</li>
+                <li>Características del proceso de entrevista</li>
+            </ul>
+            <p>Los cambios no afectarán retroactivamente servicios ya adquiridos.</p>
+            
+            <h3>13. Enlaces a Terceros</h3>
+            <p>Nuestro sitio web puede contener enlaces a sitios web de terceros (Hotmart, Telegram, etc.). No somos responsables del contenido, políticas de privacidad o prácticas de estos sitios. Te recomendamos revisar los términos y políticas de cualquier sitio de terceros que visites.</p>
+            
+            <h3>14. Ley Aplicable y Jurisdicción</h3>
+            <p>Estos Términos y Condiciones se rigen por las leyes de México. Cualquier disputa relacionada con estos términos será sometida a la jurisdicción exclusiva de los tribunales competentes de México.</p>
+            
+            <h3>15. Indemnización</h3>
+            <p>Aceptas indemnizar y eximir de responsabilidad a Mentes Magnas, sus afiliados, directores, empleados y agentes de cualquier reclamación, pérdida, responsabilidad, daño o gasto (incluyendo honorarios legales razonables) derivados de:</p>
+            <ul>
+                <li>Tu uso del servicio</li>
+                <li>Tu violación de estos Términos y Condiciones</li>
+                <li>Tu violación de derechos de terceros</li>
+            </ul>
+            
+            <h3>16. Divisibilidad</h3>
+            <p>Si alguna disposición de estos Términos y Condiciones se considera inválida o inaplicable, dicha disposición se eliminará o limitará en la medida mínima necesaria, y las disposiciones restantes continuarán en pleno vigor y efecto.</p>
+            
+            <h3>17. Totalidad del Acuerdo</h3>
+            <p>Estos Términos y Condiciones, junto con nuestra Política de Privacidad, constituyen el acuerdo completo entre tú y Mentes Magnas con respecto al uso de nuestros servicios.</p>
+            
+            <h3>18. Modificaciones a los Términos</h3>
+            <p>Nos reservamos el derecho de modificar estos Términos y Condiciones en cualquier momento. Los cambios significativos serán notificados mediante:</p>
+            <ul>
+                <li>Actualización de la fecha de "última actualización" en esta página</li>
+                <li>Publicación de un aviso en nuestro sitio web</li>
+                <li>Envío de notificación por correo electrónico (para cambios sustanciales)</li>
+            </ul>
+            <p>Tu uso continuado del servicio después de cualquier modificación constituye tu aceptación de los nuevos términos.</p>
+            
+            <h3>19. Renuncia</h3>
+            <p>El hecho de que no ejerzamos o hagamos cumplir algún derecho o disposición de estos Términos y Condiciones no constituirá una renuncia a dicho derecho o disposición.</p>
+            
+            <h3>20. Contacto</h3>
+            <p>Si tienes preguntas, comentarios o inquietudes sobre estos Términos y Condiciones, contáctanos:</p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:amorsindolor@mentesmagnas.com">amorsindolor@mentesmagnas.com</a></li>
+                <li><strong>Telegram:</strong> <a href="https://t.me/+HbH_kzEF-Qg2YWM5" target="_blank">https://t.me/+HbH_kzEF-Qg2YWM5</a></li>
+            </ul>
+            
+            <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(199,112,86,0.2);"><strong>Al utilizar los servicios de Mentes Magnas, confirmas que has leído, entendido y aceptado estos Términos y Condiciones en su totalidad.</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <p>© 2026 Mentes Magnas. Todos los derechos reservados.</p>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#privacidad">Privacidad</a>
+            <a href="#terminos">Términos</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </div>
+</footer>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
