@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  <meta name="description" content="Una lectura personalizada para reconocer tus patrones, comprender tu historia y volver a ti con mayor claridad.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+
+<!-- SEO Meta Tags -->
+<title>Tu código Secreto</title>
+<meta property="og:title" content="Tu código Secreto" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Tu código Secreto" />
+<!-- End SEO Meta Tags -->
+<script data-lp-token-hydrate>
+(function(){try{
+  var slug="lp-mtau2nhm-mkhh3";
+  var SITEK="";
+  var SK='lp_access_'+slug;
+  var map={access_token:'lp_pw_',allowlist_access_token:'lp_al_',pin_access_token:'lp_pin_',paywall_access_token:'lp_paid_'};
+  function siteTok(){try{return SITEK?localStorage.getItem(SITEK):null;}catch(e){return null;}}
+  var u=new URL(location.href);var found=null;var changed=false;
+  var PINP=true;
+  if(!PINP){try{localStorage.removeItem('lp_pin_'+slug);if(SITEK)localStorage.removeItem(SITEK);}catch(e){}}
+  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{if(PINP||p!=='pin_access_token'){localStorage.setItem(map[p]+slug,v);if(SITEK&&p==='pin_access_token')localStorage.setItem(SITEK,v);}}catch(e){}if(p==='pin_access_token'){try{sessionStorage.setItem('lp_fresh_'+slug,'1');}catch(e){}}u.searchParams.delete(p);changed=true;}});
+  if(found){try{sessionStorage.setItem(SK,found);}catch(e){}}
+  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
+  if(changed){try{history.replaceState(null,'',u.toString());}catch(e){}}
+  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();}catch(e){return null;}}
+  function needsToken(url,method){if(!url)return false;var s=String(url);var m=(method||'GET').toUpperCase();var isSheetWrite=(m==='POST'||m==='PATCH'||m==='PUT'||m==='DELETE')&&/\/sheet-rows(\/|$|\?)/.test(s);var isSheetRead=/\/sheet-data(\/|$|\?)/.test(s);var isLlm=/\/api\/landing-pages\/public\/[^/]+\/(llm|llm-config)(\/|$|\?)/.test(s);return isSheetWrite||isSheetRead||isLlm;}
+  if(window.fetch){var _f=window.fetch;window.fetch=function(input,init){try{var url=typeof input==='string'?input:(input&&input.url)||'';var method=(init&&init.method)||(input&&input.method)||'GET';if(needsToken(url,method)){var tok=getTok();if(tok){init=init||{};var h=new Headers(init.headers||(typeof input!=='string'?input.headers:undefined)||{});if(!h.has('X-Landing-Page-Token'))h.set('X-Landing-Page-Token',tok);init.headers=h;}}}catch(e){}return _f.call(this,input,init);};}
+  if(window.XMLHttpRequest){var _o=XMLHttpRequest.prototype.open;var _s=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.open=function(m,u){this.__lpM=m;this.__lpU=u;return _o.apply(this,arguments);};XMLHttpRequest.prototype.send=function(){try{if(needsToken(this.__lpU,this.__lpM)){var tok=getTok();if(tok)this.setRequestHeader('X-Landing-Page-Token',tok);}}catch(e){}return _s.apply(this,arguments);};}
+}catch(e){}})();
+</script>
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=6486');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='i6gKcg2iSr';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    var phone=findPhone();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    var __pLoc=(document.documentElement.lang||navigator.language||'en');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,phone:phone||'',amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,locale:__pLoc,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var sidP=urlParams.get('session_id');
+      if(sidP){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidP})}).catch(function(){});}catch(e){}}
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||('Thank you for purchasing '+pName+'.');
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-pay-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var pBtn=document.getElementById('lp-pay-success-btn');
+      if(pBtn){pBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>
+<script data-cart>
+(function(){
+  var slug='i6gKcg2iSr';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findCartEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realCart=function(arg){
+    var items, email='', customerName='', successUrl, cancelUrl, currency;
+    if(Array.isArray(arg)){items=arg;}
+    else if(arg&&typeof arg==='object'){
+      items=arg.items;email=arg.email||'';customerName=arg.name||arg.customerName||'';
+      successUrl=arg.successUrl;cancelUrl=arg.cancelUrl;currency=arg.currency;
+    }
+    if(!Array.isArray(items)||items.length===0){alert('No items in cart.');return Promise.reject('no_items');}
+    var cleanItems=[];var totalCents=0;
+    for(var i=0;i<items.length;i++){
+      var it=items[i];if(!it||typeof it!=='object'){alert('Invalid item at position '+i);return Promise.reject('bad_item');}
+      var nm=typeof it.name==='string'?it.name.trim():'';
+      if(!nm){alert('Item '+(i+1)+' is missing a name.');return Promise.reject('no_name');}
+      var amt=typeof it.amountCents==='number'?it.amountCents:(typeof it.amount==='number'?Math.round(it.amount*100):NaN);
+      if(!isFinite(amt)||amt<1){alert('Item "'+nm+'" needs a valid amount in cents.');return Promise.reject('bad_amount');}
+      var qty=(typeof it.quantity==='number'&&it.quantity>0)?Math.floor(it.quantity):1;
+      cleanItems.push({name:nm,description:it.description||'',amountCents:amt,quantity:qty});
+      totalCents+=amt*qty;
+    }
+    if(totalCents<50){alert('Cart total must be at least $0.50');return Promise.reject('total_too_low');}
+    if(!email)email=findCartEmail();
+    if(!customerName)customerName=findCartName();
+    var cartPhone=findCartPhone();
+    if(!email){var p=window.prompt('Enter your email for the receipt:','');if(p&&p.indexOf('@')>-1){email=p.trim();}else{alert('An email address is required to complete checkout.');return Promise.reject('no_email');}}
+    var successBase=window.location.href.split('?')[0];
+    var body={email:email,name:customerName,items:cleanItems,locale:(document.documentElement.lang||navigator.language||'en')};
+    if(currency)body.currency=currency;
+    if(cartPhone)body.phone=cartPhone;
+    body.successUrl=successUrl||(successBase+'?cart=success&email='+encodeURIComponent(email)+'&session_id={CHECKOUT_SESSION_ID}');
+    body.cancelUrl=cancelUrl||(successBase+'?cart=cancelled');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/cart/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process checkout');throw new Error(d.error);}
+    });
+  };
+  try{Object.defineProperty(window,'__processCart',{value:__realCart,writable:false,configurable:false});}catch(e){window.__processCart=__realCart;}
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('cart')==='success'){
+      var sidC=urlParams.get('session_id');
+      if(sidC){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidC})}).catch(function(){});}catch(e){}}
+      if(document.getElementById('payment-success-overlay')||document.getElementById('donation-success-overlay')||document.getElementById('cart-success-overlay'))return;
+      var overlay=document.createElement('div');overlay.id='cart-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||'Thank you for your order.';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Order Confirmed!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-cart-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var cBtn=document.getElementById('lp-cart-success-btn');
+      if(cBtn){cBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  <header class="hero" id="inicio"><nav class="nav shell"><a class="brand" href="#inicio"><span>A</span>AMAF</a><a class="nav-cta" href="#oferta">Conocer mi Código</a></nav><div class="hero-grid shell"><div class="hero-copy"><p class="kicker">Una lectura personal para volver a ti</p><h1>Antes de seguir cambiando,<br><em>descubre quién eres.</em></h1><p class="hero-lede">Tu Código Secreto reúne las piezas de tu historia para ayudarte a reconocer patrones, comprender lo que has cargado y mirar tu vida con una claridad más tuya.</p><a class="button" href="#oferta">Quiero conocer mi Código <b>$7 USD</b></a><div class="trust"><span>Personalizado</span><span>Privado</span><span>Para volver a él siempre</span></div></div><figure class="hero-visual"><img src="https://tu-codigo-secreto-venta-amaf.franciscobenitez.chatgpt.site/hero-mujer-amaf.png" alt="Mujer adulta en un momento tranquilo de reflexión personal"><figcaption>“Tal vez no estás perdida.<br>Tal vez llevas demasiado tiempo lejos de ti.”</figcaption></figure></div></header>
+  <section class="section mirror"><div class="shell narrow center"><p class="kicker">¿Te reconoces aquí?</p><h2>Casi todo lo que crees que eres, <em>alguien te lo enseñó a creer.</em></h2><p class="intro">A veces una frase se repite tanto que termina pareciendo identidad. Se instala en tu manera de amar, decidir, pedir, recibir y cuidarte… hasta que olvidas preguntarte si alguna vez fue verdad.</p></div><div class="beliefs shell"><span>Tú eres así, no vas a cambiar.</span><span>Eres demasiado.</span><span>No eres suficiente.</span><span>Lo tuyo es aguantar.</span><span>Lo tuyo es servir.</span><span>No sirves para esto.</span><span>No lo intentes.</span><span>Así somos en esta familia.</span></div><p class="beliefs-close shell"><strong>Ninguna de esas frases era tu verdad.</strong><br>Son mentiras que creíste.</p><div class="mirror-grid shell"><article class="mirror-card"><span>01</span><p>Has sido tantas cosas para tantas personas que a veces ya no sabes dónde quedaste tú.</p></article><article class="mirror-card"><span>02</span><p>Cumples, resuelves y sostienes… pero en silencio te preguntas por qué algo sigue sintiéndose incompleto.</p></article><article class="mirror-card"><span>03</span><p>Hay historias en el amor, el dinero o tus decisiones que cambian de rostro, pero terminan sintiéndose igual.</p></article><article class="mirror-card"><span>04</span><p>No quieres convertirte en otra persona. Quieres entender por qué te has alejado de la que ya eres.</p></article></div><p class="bridge shell">No necesitas juzgarte por haberte adaptado. <strong>Necesitas un lugar desde el cual volver a reconocerte.</strong></p></section>
+  <section class="section revelation"><div class="shell revelation-grid"><div class="revelation-copy"><p class="kicker">Lo que cambia cuando puedes nombrarlo</p><h2>Comprenderte no borra tu historia. <em>Cambia la forma en que la miras.</em></h2><p>Cuando una experiencia por fin tiene palabras, deja de sentirse como una falla inexplicable. Puedes empezar a reconocer qué es tuyo, qué aprendiste y qué ya no necesitas seguir sosteniendo en automático.</p><blockquote>“El alivio no siempre llega cuando todo se resuelve. A veces comienza cuando por fin entiendes lo que te pasa.”</blockquote></div><div class="relief-list"><article><span>01</span><div><h3>De la culpa a la comprensión</h3><p>Mirar tus patrones sin convertirlos en defectos.</p></div></article><article><span>02</span><div><h3>Del ruido a la claridad</h3><p>Distinguir tus necesidades de las expectativas ajenas.</p></div></article><article><span>03</span><div><h3>De reaccionar a elegir</h3><p>Tener un mapa para tomar decisiones más conscientes.</p></div></article></div></div></section>
+  <section class="section method"><div class="shell center narrow"><p class="kicker">Una mirada más completa</p><h2>No es un test. No es un horóscopo. <em>Y no se parece a nada que hayas hecho.</em></h2><p class="intro">Es una metodología propia que integra onomástica, numerología, psicogenealogía y herramientas de autoconocimiento emocional para conectar piezas que normalmente observamos por separado. No llega a encerrarte en una etiqueta: llega a mostrarte una perspectiva más completa de ti.</p></div><div class="method-row shell"><div><b>01</b><span>El simbolismo de tu nombre</span></div><div><b>02</b><span>Los ciclos de tu nacimiento</span></div><div><b>03</b><span>Las huellas de tu historia familiar</span></div><div><b>04</b><span>Tus patrones emocionales y relacionales</span></div></div></section>
+  <section class="section areas"><div class="shell areas-grid"><div class="areas-art"><img src="https://tu-codigo-secreto-venta-amaf.franciscobenitez.chatgpt.site/siete-capas-amaf.png" alt="Siete capas que representan las áreas del Código"><div class="art-note">Siete capas.<br><em>Una sola historia: la tuya.</em></div></div><div><p class="kicker">Lo que tu Código revela</p><h2>Siete áreas para mirar tu vida desde un mismo centro.</h2><div class="accordion-list"><details open><summary><span>01</span><b>Esencia vibracional</b><i>+</i></summary><p>La parte de ti que existe antes de los roles, las etiquetas y todo aquello que aprendiste a ser para pertenecer.</p></details><details><summary><span>02</span><b>Energía emocional</b><i>+</i></summary><p>Cómo sientes, procesas y proteges tu mundo interior; qué te desborda y qué puede ayudarte a volver a tu centro.</p></details><details><summary><span>03</span><b>Amor y autoestima</b><i>+</i></summary><p>Cómo te valoras, cómo te vinculas y qué necesidades afectivas quizá has aprendido a poner en segundo lugar.</p></details><details><summary><span>04</span><b>Propósito y misión interna</b><i>+</i></summary><p>Tus dones, tu manera particular de aportar y aquello que puede devolverte una sensación más profunda de sentido.</p></details><details><summary><span>05</span><b>Abundancia y seguridad</b><i>+</i></summary><p>La relación entre merecimiento, seguridad, sacrificio y la forma en que permites que lo bueno también llegue a ti.</p></details><details><summary><span>06</span><b>Poder interior</b><i>+</i></summary><p>Tu capacidad de poner límites, atravesar cambios y tomar decisiones sin abandonarte para complacer a los demás.</p></details><details><summary><span>07</span><b>Ciclo energético actual</b><i>+</i></summary><p>El momento vital que estás atravesando y las preguntas que hoy podrían estar pidiendo tu atención.</p></details></div></div></div></section>
+  <section class="section steps"><div class="shell center narrow"><p class="kicker">Tu experiencia</p><h2>Conocerte puede empezar de una manera sencilla.</h2></div><div class="steps-grid shell"><article><span>1</span><h3>Compartes tus datos</h3><p>Tu nombre completo, fecha de nacimiento y la información necesaria para crear tu lectura personal.</p></article><article><span>2</span><h3>Se crea tu Código</h3><p>Tu información se integra en un análisis privado, personalizado y distinto al de cualquier otra persona.</p></article><article><span>3</span><h3>Te encuentras contigo</h3><p>Exploras tus siete áreas y guardas tu PDF para releerlo cada vez que necesites volver a tu centro.</p></article></div></section>
+  <section class="section compare"><div class="shell center narrow"><p class="kicker">La diferencia real</p><h2>Vivir la versión que otros escribieron o empezar a <em>conocer la tuya.</em></h2></div><div class="compare-grid shell"><article class="before"><p>Sin conocer tu Código</p><ul><li>Te defines por lo que otros dijeron de ti y repites maneras de amar, callar o sostener que te dejan en segundo plano.</li><li>Vives cumpliendo, sirviendo y resolviendo, aunque el desgaste termine afectando tu bienestar y la forma en que te cuidas.</li><li>Sientes que algo no encaja y que las mismas historias vuelven a aparecer en tus relaciones, tus decisiones y tu relación con el dinero.</li><li>Confundes lo que aprendiste con quien eres: sacrificio con amor, carencia con seguridad y aguantar con ser fuerte.</li></ul></article><article class="after"><p>Con tu Código revelado</p><ul><li>Empiezas a reconocer tus necesidades afectivas y a comprender mejor la forma en que construyes tus relaciones personales.</li><li>Comprendes qué te desgasta emocionalmente y qué hábitos de cuidado pueden ayudarte a vivir con mayor equilibrio y bienestar.</li><li>Observas tu relación con el merecimiento, la seguridad y la abundancia desde una perspectiva más consciente.</li><li>Tienes un mapa para separar lo aprendido de lo que realmente eres y comenzar a elegir desde ti.</li></ul></article></div></section>
+  <section class="story"><div class="shell story-inner"><figure class="story-photo"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/55.-angela-foto-personal.png" alt="AMAF, creadora de Tu Código Secreto"></figure><div class="story-copy"><p class="kicker">De mi historia a la tuya</p><blockquote>“Yo también viví durante años desde versiones de mí que no había elegido.”</blockquote><p>Viví convencida de que yo era todo eso que habían dicho de mí. Cargué etiquetas, expectativas y maneras de amar que aprendí a repetir sin preguntarme si realmente me pertenecían.</p><p>Durante mucho tiempo cambiaron las personas y los escenarios, pero el final se sentía igual. Busqué respuestas, leí, aprendí y traté de entenderme. Aun así, seguía terminando en el mismo lugar.</p><p>Hasta que un día entendí que no me faltaba información: necesitaba reconocer mi propio Código. Cuando pude verlo con claridad, comprendí por qué elegía, por qué me quedaba, por qué volvía y cuánto de lo que llamaba “yo” había sido aprendido.</p><p>De esa experiencia nació Tu Código Secreto. No desde una teoría lejana, sino desde mi propia historia y el deseo de ofrecerte un punto de partida para mirar la tuya.</p><span>Con amor, AMAF</span></div></div></section>
+  <section class="section testimonials"><div class="shell center narrow"><p class="kicker">Testimonios reales</p><h2>Esto no es sólo lo que decimos. <em>Es lo que ellas descubrieron.</em></h2><p class="intro">Mujeres reales compartiendo lo que significó mirarse desde una perspectiva distinta.</p></div><div class="testimonial-grid shell"><figure class="testimonial-card"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/34.-GLORIA.webp" alt="Testimonio real de Gloria"><figcaption>Testimonio de Gloria</figcaption></figure><figure class="testimonial-card"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/36.ANGELICA.webp" alt="Testimonio real de Angélica"><figcaption>Testimonio de Angélica</figcaption></figure><figure class="testimonial-card"><img src="https://fbdigitalplaza.com/wp-content/uploads/2026/03/39.-VENUS.webp" alt="Testimonio real de Venus"><figcaption>Testimonio de Venus</figcaption></figure></div></section>
+  <section class="section offer" id="oferta"><div class="shell offer-grid"><div><p class="kicker">Tu punto de partida</p><h2>No tienes que tener todas las respuestas para empezar a volver a ti.</h2><p>Quizá hoy sólo necesitas una primera mirada. Una que te ayude a ordenar lo que sientes y reconocer que, debajo de todo lo aprendido, tú sigues ahí.</p></div><article class="offer-card"><p class="offer-name">Tu Código Secreto</p><div class="price"><sup>$</sup>7 <small>USD</small></div><ul><li>Lectura personalizada de tus siete áreas</li><li>Acceso a tu espacio privado</li><li>PDF descargable para conservar</li><li>Un solo pago, sin suscripción</li></ul><a class="button light" href="#">Quiero conocer mi Código</a><small>Sustituye este enlace por tu checkout.</small></article></div></section>
+  <section class="section faq"><div class="shell faq-grid"><div><p class="kicker">Antes de empezar</p><h2>Preguntas que tal vez ya te hiciste.</h2></div><div><details><summary>¿Es un test o un horóscopo?<i>+</i></summary><p>No. Es una lectura personal de autoconocimiento que integra distintas herramientas para ofrecerte una perspectiva reflexiva sobre tu historia y tus patrones.</p></details><details><summary>¿Mi resultado será genérico?<i>+</i></summary><p>No. Tu Código se construye con tu información personal; por eso la lectura y sus siete áreas corresponden a ti.</p></details><details><summary>¿Mi información es privada?<i>+</i></summary><p>Sí. El proceso es personal y tu acceso es privado. No necesitas contar tu historia públicamente.</p></details><details><summary>¿Sustituye terapia o atención profesional?<i>+</i></summary><p>No. Tu Código Secreto es una herramienta de autoconocimiento y reflexión personal. No sustituye atención psicológica, médica, terapéutica, financiera ni profesional.</p></details></div></div></section>
+</main>
+<footer><div class="shell"><a class="brand footer-brand" href="#inicio"><span>A</span>AMAF</a><p>Una invitación a conocerte con mayor claridad y menos juicio.</p><small>© 2026 AMAF · Tu Código Secreto es una herramienta de autoconocimiento y reflexión personal.</small></div></footer>
+<a class="mobile-buy" href="#oferta">Conocer mi Código <b>$7 USD</b></a>
+</body>
+</html>
