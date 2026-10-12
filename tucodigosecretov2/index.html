@@ -340,5 +340,42 @@ fbq('track','ViewContent',{content_name:'Tu Codigo Secreto',content_category:'Pr
 <script>
 document.addEventListener('click',function(ev){try{var a=ev.target&&ev.target.closest?ev.target.closest('a[href*="pay.hotmart.com"]'):null;if(a&&window.fbq){fbq('trackCustom','ClickComprar',{content_name:'Tu Codigo Secreto',value:9,currency:'USD'});}}catch(err){}},true);
 </script>
+<script id="tcs-hotmart-attribution-v1">
+(function () {
+  'use strict';
+  var allowed = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id',
+    'campaign_id', 'adset_id', 'ad_id', 'placement', 'site_source_name', 'fbclid', 'src', 'sck'];
+  function updateLink(anchor) {
+    try {
+      var destination = new URL(anchor.getAttribute('href'), window.location.href);
+      if (destination.protocol !== 'https:' || destination.hostname !== 'pay.hotmart.com') return;
+      var incoming = new URLSearchParams(window.location.search);
+      var changed = false;
+      allowed.forEach(function (key) {
+        var value = incoming.get(key);
+        if (value && !destination.searchParams.has(key)) {
+          destination.searchParams.set(key, value);
+          changed = true;
+        }
+      });
+      if (changed) anchor.setAttribute('href', destination.href);
+    } catch (error) {}
+  }
+  function updateAll() {
+    document.querySelectorAll('a[href]').forEach(updateLink);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateAll, { once: true });
+  } else {
+    updateAll();
+  }
+  ['click', 'auxclick'].forEach(function (eventName) {
+    document.addEventListener(eventName, function (event) {
+      var anchor = event.target && event.target.closest ? event.target.closest('a[href]') : null;
+      if (anchor) updateLink(anchor);
+    }, true);
+  });
+})();
+</script>
 </body>
 </html>
