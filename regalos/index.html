@@ -10,6 +10,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2150912992449350');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2150912992449350&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
 <!-- SEO Meta Tags -->
 <title>AMAF | Tus obsequios y Tu Código Secreto</title>
@@ -382,7 +399,7 @@
 <div class="divider" aria-hidden="true"></div>
 <p>Hay ideas que llevamos tanto tiempo creyendo que terminamos confundiéndolas con nuestra propia verdad.</p>
 <p>Esta <strong>guía</strong> es una invitación a reconocerlas y comenzar a cuestionar aquello que quizá ha estado influyendo en tu manera de verte, relacionarte y tomar decisiones.</p>
-<a class="cta-primary" href="https://fbdigitalplaza.com/wp-content/uploads/2026/10/1.-LM-GUIA-7-MENTIRAS-QUE-FRENAN-TU-VIDA.pdf" target="_blank" rel="noopener">Descargar mi guía <span class="arrow" aria-hidden="true">↓</span></a>
+<a class="cta-primary" href="https://fbdigitalplaza.com/wp-content/uploads/2026/10/1.-LM-GUIA-7-MENTIRAS-QUE-FRENAN-TU-VIDA.pdf" target="_blank" rel="noopener" onclick="amafDescargaGuia()">Descargar mi guía <span class="arrow" aria-hidden="true">↓</span></a>
 <div class="eyebrow closing-eyebrow">Tu primer paso comienza aquí</div>
 </div>
 <div class="product-visual"><img class="product-image" src="https://app.orkestic.com/objects/generated-images/36/1793387406524-e82726bd4566b63b.png" alt="Guía Las 7 mentiras que frenan tu vida sin que lo sepas" fetchpriority="high"></div>
@@ -399,7 +416,7 @@
 <p>Quise darte algo adicional para que no te quedes solamente con lo que descubras al leer la guía.</p>
 <p>Este <strong>segundo regalo</strong> te ayudará a llevar esa reflexión a tu propia historia y comenzar a observar con más claridad aquello que se repite en tu vida.</p>
 <div class="note">Porque reconocer una idea es importante. Pero empezar a observar cómo aparece en tu historia puede abrir una comprensión mucho más profunda.</div>
-<a class="cta-primary" href="https://fbdigitalplaza.com/wp-content/uploads/2026/10/2.-LM-MAPA-DEL-PATRON-QUE-SE-REPITE-EN-TU-VIDA.pdf" target="_blank" rel="noopener">Descubrir mi segundo regalo <span class="arrow" aria-hidden="true">♡</span></a>
+<a class="cta-primary" href="https://fbdigitalplaza.com/wp-content/uploads/2026/10/2.-LM-MAPA-DEL-PATRON-QUE-SE-REPITE-EN-TU-VIDA.pdf" target="_blank" rel="noopener" onclick="amafDescargaRegalo2()">Descubrir mi segundo regalo <span class="arrow" aria-hidden="true">♡</span></a>
 </div>
 </div>
 </section>
@@ -441,7 +458,7 @@
 <div class="eyebrow">Tu Código Secreto</div>
 <div class="price">USD $9</div>
 <p>Descubre qué puedes comprender sobre ti.</p>
-<a class="cta-primary" href="https://mentesmagnas.com/tucodigosecretov2/" target="_blank" rel="noopener">Quiero descubrir mi Código Secreto <span class="arrow" aria-hidden="true">→</span></a>
+<a class="cta-primary" href="https://mentesmagnas.com/tucodigosecretov2/" target="_blank" rel="noopener" onclick="amafCodigoSecreto()">Quiero descubrir mi Código Secreto <span class="arrow" aria-hidden="true">→</span></a>
 </div>
 </div>
 </section>
@@ -454,5 +471,42 @@
 <svg class="footer-ornament right" viewBox="0 0 150 90" aria-hidden="true"><path d="M-10 85C15 34 70 95 134 23M-10 76C20 24 77 85 146 13M-10 65C30 14 83 75 155 2M-10 54C35 4 92 65 165-8"/></svg>
 </footer></div>
 </main>
+<script>
+(function () {
+  var ultimoCheckout = 0;
+
+  function evento(nombre, datos) {
+    try {
+      if (typeof fbq === 'function') { fbq('track', nombre, datos || {}); }
+    } catch (e) {}
+  }
+
+  function eventoCustom(nombre, datos) {
+    try {
+      if (typeof fbq === 'function') { fbq('trackCustom', nombre, datos || {}); }
+    } catch (e) {}
+  }
+
+  window.amafDescargaGuia = function () {
+    eventoCustom('DescargaGuia', { content_name: 'Guia 7 mentiras que frenan tu vida' });
+  };
+
+  window.amafDescargaRegalo2 = function () {
+    eventoCustom('DescargaRegalo2', { content_name: 'Mapa del patron que se repite en tu vida' });
+  };
+
+  window.amafCodigoSecreto = function () {
+    eventoCustom('ClicCodigoSecreto', { content_name: 'Tu Codigo Secreto' });
+    var ahora = Date.now();
+    if (ahora - ultimoCheckout < 2000) { return; }
+    ultimoCheckout = ahora;
+    evento('InitiateCheckout', {
+      content_name: 'Tu Codigo Secreto',
+      value: 9.00,
+      currency: 'USD'
+    });
+  };
+})();
+</script>
 </body>
 </html>
