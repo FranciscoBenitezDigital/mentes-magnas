@@ -300,9 +300,13 @@
 // Endpoint: flow 8932 PayMeGPT -> append Google Sheets (Hoja 1).
 const CONFIG={registrationEndpoint:'https://app.orkestic.com/api/webhooks/flow/8932/faed453b63b1d12c0ada15b2b9fee9675e7cff9b598e3c209bca5c1e0a2cbf9e',telegramUrl:'https://t.me/+6Dqk6eLc9G83NmIx'};document.getElementById('privacy').onclick=e=>{e.preventDefault();document.getElementById('policy').showModal()};document.getElementById('registro').onsubmit=async e=>{e.preventDefault();const s=document.getElementById('status');if(!CONFIG.registrationEndpoint||!CONFIG.telegramUrl){s.textContent='Las inscripciones todavía no están habilitadas. Vuelve pronto para reservar tu lugar.';return}const b=e.target.querySelector('button');b.disabled=true;b.textContent='REGISTRANDO…';try{const r=await fetch(CONFIG.registrationEndpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify((()=>{const E=document.getElementById('email').value.trim();const F=new Intl.DateTimeFormat('es-MX',{timeZone:'America/Mexico_City',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});const p={};F.formatToParts(new Date()).forEach(x=>{p[x.type]=x.value});const FC=p.day+'/'+p.month+'/'+p.year+' '+p.hour+':'+p.minute+':'+p.second;return{contactEmail:E,channel:'email',data:{email:E,consent:true,event:'17-19-noviembre-2026',fecha_cdmx:FC}}})())});if(!r.ok)throw Error();const data=await r.json();if(data.success!==true)throw Error();
 try{if(typeof fbq==='function'){var eid='lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,10);fbq('track','Lead',{content_name:'Tu Codigo Secreto 17-19 Nov 2026',content_category:'registro-telegram',currency:'MXN',value:0},{eventID:eid});fbq('trackCustom','RegistroCodigoSecreto',{origen:'mentesmagnas.com/registro',evento:'17-19-noviembre-2026'},{eventID:eid+'-c'});}}catch(_e){}
-const panel=document.createElement('div');
-const title=document.createElement('h3');title.textContent='✅ Tu correo quedó registrado.';
-const detail=document.createElement('p');detail.textContent='Falta un paso: únete al canal para recibir los audios del 17 al 19 de noviembre.';detail.style.lineHeight='1.6';
-const link=document.createElement('a');link.className='cta';link.href=CONFIG.telegramUrl;link.textContent='UNIRME AL CANAL DE TELEGRAM →';
-panel.append(title,detail,link);e.target.replaceChildren(panel)}catch(err){s.textContent='No pudimos completar tu inscripción. Inténtalo de nuevo.';b.disabled=false;b.textContent='QUIERO INSCRIBIRME GRATIS →'}};
+const panel=document.createElement('div');panel.className='exito';
+const ok=document.createElement('p');ok.className='ok';ok.textContent='✅ TU CORREO QUEDÓ REGISTRADO';
+const title=document.createElement('h3');title.appendChild(document.createTextNode('⚠️ Falta '));
+const em=document.createElement('em');em.textContent='solo un paso';title.appendChild(em);
+const detail=document.createElement('p');detail.className='det';detail.textContent='Los tres audios se envían por el canal de Telegram. Únete ahora para recibirlos del 17 al 19 de noviembre.';
+const flecha=document.createElement('div');flecha.className='flecha';flecha.setAttribute('aria-hidden','true');flecha.textContent='👇';
+const link=document.createElement('a');link.className='ctatg';link.href=CONFIG.telegramUrl;link.rel='noopener';link.textContent='✈️ UNIRME AL CANAL DE TELEGRAM';
+const adv=document.createElement('p');adv.className='adv';adv.textContent='Sin este paso no vas a recibir los audios.';
+panel.append(ok,title,detail,flecha,link,adv);e.target.replaceChildren(panel)}catch(err){s.textContent='No pudimos completar tu inscripción. Inténtalo de nuevo.';b.disabled=false;b.textContent='QUIERO INSCRIBIRME GRATIS →'}};
 </script></body></html>
