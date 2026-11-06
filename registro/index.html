@@ -311,7 +311,71 @@ function rememberCountedLead(email){
   countedLeadEmails.add(email);
   try{localStorage.setItem(LEAD_STORAGE_PREFIX+email,'1');}catch(_e){}
 }
-document.getElementById('privacy').onclick=e=>{e.preventDefault();document.getElementById('policy').showModal()};document.getElementById('registro').onsubmit=async e=>{e.preventDefault();if(registrationInFlight)return;const s=document.getElementById('status');if(!CONFIG.registrationEndpoint||!CONFIG.telegramUrl){s.textContent='Las inscripciones todavía no están habilitadas. Vuelve pronto para reservar tu lugar.';return}const email=document.getElementById('email').value.trim().toLowerCase();const b=e.target.querySelector('button');registrationInFlight=true;b.disabled=true;b.textContent='REGISTRANDO…';try{const r=await fetch(CONFIG.registrationEndpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify((()=>{const E=email;const F=new Intl.DateTimeFormat('es-MX',{timeZone:'America/Mexico_City',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});const p={};F.formatToParts(new Date()).forEach(x=>{p[x.type]=x.value});const FC=p.day+'/'+p.month+'/'+p.year+' '+p.hour+':'+p.minute+':'+p.second;return{contactEmail:E,channel:'email',data:{email:E,consent:true,event:'17-19-noviembre-2026',fecha_cdmx:FC}}})())});if(!r.ok)throw Error();const data=await r.json();if(data.success!==true)throw Error();
+// Limita toda la respuesta, incluido JSON, sin bloquear un reintento manual.
+const REGISTRATION_TIMEOUT_MS=20000;
+async function submitRegistration(payload){
+  const controller=typeof AbortController==='function'?new AbortController():null;
+  let timeoutId;
+  try{
+    return await Promise.race([
+      (async()=>{
+        const options={
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify(payload)
+        };
+        if(controller)options.signal=controller.signal;
+        const response=await fetch(CONFIG.registrationEndpoint,options);
+        if(!response.ok)throw new Error('Registration response not confirmed');
+        const data=await response.json();
+        if(!data||data.success!==true)throw new Error('Registration response not confirmed');
+        return data;
+      })(),
+      new Promise((_,reject)=>{
+        timeoutId=setTimeout(()=>{
+          const error=new Error('Registration confirmation timed out');
+          error.name='RegistrationTimeoutError';
+          // El timeout no prueba que el servidor no haya recibido el correo.
+          reject(error);
+          if(controller)controller.abort();
+        },REGISTRATION_TIMEOUT_MS);
+      })
+    ]);
+  }finally{
+    clearTimeout(timeoutId);
+  }
+}
+document.getElementById('privacy').onclick=e=>{
+  e.preventDefault();
+  document.getElementById('policy').showModal();
+};
+document.getElementById('registro').onsubmit=async e=>{
+  e.preventDefault();
+  if(registrationInFlight)return;
+  const form=e.currentTarget;
+  const s=document.getElementById('status');
+  if(!CONFIG.registrationEndpoint||!CONFIG.telegramUrl){
+    s.textContent='Las inscripciones todavía no están habilitadas. Vuelve pronto para reservar tu lugar.';
+    return;
+  }
+  if(!form.reportValidity())return;
+  const email=document.getElementById('email').value.trim().toLowerCase();
+  const b=form.querySelector('button[type="submit"]');
+  registrationInFlight=true;
+  s.textContent='Estamos registrando tus datos. Por favor espera y no cierres esta página.';
+  b.setAttribute('aria-busy','true');
+  b.disabled=true;
+  b.textContent='REGISTRANDO…';
+  try{
+    const F=new Intl.DateTimeFormat('es-MX',{timeZone:'America/Mexico_City',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+    const p={};
+    F.formatToParts(new Date()).forEach(x=>{p[x.type]=x.value});
+    const FC=p.day+'/'+p.month+'/'+p.year+' '+p.hour+':'+p.minute+':'+p.second;
+    await submitRegistration({
+      contactEmail:email,
+      channel:'email',
+      data:{email:email,consent:true,event:'17-19-noviembre-2026',fecha_cdmx:FC}
+    });
 try{if(typeof fbq==='function'&&!hasCountedLead(email)){var eid='lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,10);fbq('track','Lead',{content_name:'Tu Codigo Secreto 17-19 Nov 2026',content_category:'registro-telegram',currency:'MXN',value:0},{eventID:eid});rememberCountedLead(email);fbq('trackCustom','RegistroCodigoSecreto',{origen:'mentesmagnas.com/registro',evento:'17-19-noviembre-2026'},{eventID:eid+'-c'});}}catch(_e){}
 const panel=document.createElement('div');panel.className='exito';
 const ok=document.createElement('p');ok.className='ok';ok.textContent='✅ TU CORREO QUEDÓ REGISTRADO';
@@ -330,5 +394,17 @@ link.addEventListener('click',function(){
   }}catch(_e){}
 });
 const adv=document.createElement('p');adv.className='adv';adv.textContent='Sin este paso no vas a recibir los audios.';
-panel.append(ok,title,detail,flecha,link,adv);e.target.replaceChildren(panel)}catch(err){s.textContent='No pudimos completar tu inscripción. Inténtalo de nuevo.';b.disabled=false;b.textContent='QUIERO INSCRIBIRME GRATIS →'}finally{registrationInFlight=false}};
+panel.append(ok,title,detail,flecha,link,adv);
+form.replaceChildren(panel);
+  }catch(err){
+    s.textContent=(err&&err.name==='RegistrationTimeoutError')
+      ? 'La confirmación está tardando más de lo esperado. Tu registro podría haberse recibido. Conservamos tu correo; pulsa «VOLVER A INTENTAR» para enviarlo de nuevo.'
+      : 'No pudimos confirmar tu inscripción. Tu registro podría haberse recibido. Conservamos tu correo; revisa tu conexión y pulsa «VOLVER A INTENTAR».';
+    b.textContent='VOLVER A INTENTAR →';
+  }finally{
+    registrationInFlight=false;
+    b.disabled=false;
+    b.setAttribute('aria-busy','false');
+  }
+};
 </script></body></html>
